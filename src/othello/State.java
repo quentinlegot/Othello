@@ -1,6 +1,7 @@
 package othello;
 
 public class State {
+	private int[][] plateau;
 
 	public boolean isOver() {
 		return false;
