@@ -1,5 +1,8 @@
 package othello;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 public class Main {
 
 	
@@ -11,6 +14,10 @@ public class Main {
 			int player = game.getCurrentPlayer();
 			
 		}
+		ArrayList<Point> a = new ArrayList<Point>();
+		a.add(new Point(3,3));
+		System.out.println(game.getMove(p1).toString());
+		System.out.println(a.get(0).toString());
 	}
 	
 	public static int[][] initialize(int p1, int p2){
