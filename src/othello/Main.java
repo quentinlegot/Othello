@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		int p1 = 1, p2 = 2;
 		int[][] board = initialize(p1, p2);
-		State game = new State(board, p1, p2);
+		State game = new State(board, p1, p2,0,0);
 		while(!game.isOver()) {
 			int player = game.getCurrentPlayer();
 			
