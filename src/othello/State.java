@@ -26,7 +26,7 @@ public class State {
 	}
 	
 	public ArrayList<Point> getMove(int player) {
-		ArrayList<Point> moves = null;
+	ArrayList<Point> moves = new ArrayList<Point>();
 		
 		// Clonage
 		// Parcours du plateau de jeu
@@ -34,15 +34,12 @@ public class State {
 			for (int j=0; j<this.board.length; j++) {
 				if (this.board[i][j] == this.currentPlayer) {
 					// Recherche autour du pion du joueur courant
-					System.out.println("recherche");
 					for (int k=-1; k<2;k++) {
 						for (int l=-1; l<2; l++) {
-							// La position du pion trouv� est exclue
+							// La position du pion trouvé est exclue
 							if (k!=0 || l!=0) {
-								// Si une place libre est trouv�e elle est ajout� � la liste de coups
-								System.out.println("close");
-								if ( (this.board[i+k][j+l]==0) && (i+k >= 0) && (i+k < 7 ) && (j+l >= 0) && (j+l < 7 ) ) {
-									System.out.println("jadd");
+								// Si une place libre est trouvée elle est ajoutée à la liste de coups
+								if ( ((i+k >= 0) && (i+k < 7 )) && ((j+l >= 0) && (j+l < 7 )) && (this.board[i+k][j+l]==0)) {
 									moves.add(new Point(i+k, j+l));
 								}
 							}

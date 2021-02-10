@@ -10,14 +10,14 @@ public class Main {
 		int p1 = 1, p2 = 2;
 		int[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2,0,0);
-		while(!game.isOver()) {
+		//while(!game.isOver()) {
 			int player = game.getCurrentPlayer();
 			
-		}
+		//}
 		ArrayList<Point> a = new ArrayList<Point>();
 		a.add(new Point(3,3));
 		System.out.println(game.getMove(p1).toString());
-		System.out.println(a.get(0).toString());
+		//System.out.println(a.get(0).toString());
 	}
 	
 	public static int[][] initialize(int p1, int p2){
