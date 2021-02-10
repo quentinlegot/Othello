@@ -13,5 +13,11 @@ public class Point {
 	public boolean isJump(Point other) {
 		return Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2) == 4;
 	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
 	
 }
