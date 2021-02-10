@@ -12,16 +12,21 @@ public class State {
 	private int n1;
 	private int n2;
 
-	public State(int[][] board, int p1, int p2, int n1,int n2) {
+	public State(int[][] board, int p1, int p2, int n1, int n2) {
 		this.board = board;
 		this.player1 = p1;
 		this.player2 = p2;
 		currentPlayer = p1;
-		this.n1 = n1+2;
-		this.n2 = n2+2;
+		this.n1 = n1;
+		this.n2 = n2;
+	}
+	
+	public State(int[][] board, int p1, int p2) {
+		this(board, p1, p2, 2, 2);
 	}
 	
 	public boolean isOver() {
+		
 		return false;
 	}
 	
@@ -36,7 +41,7 @@ public class State {
 					// Recherche autour du pion du joueur courant
 					for (int k=-1; k<2;k++) {
 						for (int l=-1; l<2; l++) {
-							// La position du pion trouvé est exclue
+							// La position du pion trouv� est exclue
 							if (k!=0 || l!=0) {
 								// Si une place libre est trouvée elle est ajoutée à la liste de coups
 								if ( ((i+k >= 0) && (i+k < 7 )) && ((j+l >= 0) && (j+l < 7 )) && (this.board[i+k][j+l]==0)) {
@@ -63,26 +68,24 @@ public class State {
 	}
 	
 	public State play(int x, int y) {
-		State copie = this.copie();
-		copie.board[x][y] = copie.getCurrentPlayer();
+		State copy = this.copy();
+		copy.board[x][y] = copy.getCurrentPlayer();
 		int increment = 0;
 		for(int i = -1; i<2;i++){
 			for(int z = -1;z<2;z++){
 				try {
-					copie.board[x+i][y+z] = copie.getCurrentPlayer();
-					increment+=1;			
-				} catch (Exception e) {
-
-				}
+					copy.board[x+i][y+z] = copy.getCurrentPlayer();
+					increment+=1;		
+				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
 		if (currentPlayer == 1){
-			copie.n1 += increment;
+			copy.n1 += increment;
 		}else{
-			copie.n2 += increment;
+			copy.n2 += increment;
 		}
-		copie.switchPlayer();
-		return copie;
+		copy.switchPlayer();
+		return copy;
 	}
 	public int getCurrentPlayer() {
 		return currentPlayer;
@@ -92,23 +95,18 @@ public class State {
 		this.currentPlayer = currentPlayer;
 	}
 
-	public State copie () {
-		State copie = new State (this.board, this.player1, this.player2,this.n1,this.n2);
+	public State copy () {
+		State copy = new State(this.board, this.player1, this.player2,this.n1,this.n2);
 		for (int i=0; i<this.board.length;i++) {
 			for (int j=0; j<this.board.length; j++) {
-				copie.board[i][j] = this.board[i][j];
+				copy.board[i][j] = this.board[i][j];
 			}
 		}
-		return copie;
+		return copy;
 	}
 	
 	public void switchPlayer () {
-		if (getCurrentPlayer()==this.player1) {
-			setCurrentPlayer(player2);
-		}
-		else {
-			setCurrentPlayer(player1);
-		}
+		setCurrentPlayer(getCurrentPlayer() == this.player1 ? player2 : player1);
 	}
 	
 }
