@@ -38,14 +38,19 @@ public class State {
 			for (int x = 0; x < this.board[y].length; x++) {
 				if (this.board[y][x] == player) {
 					// Recherche autour du pion du joueur courant
-					for (int deltaY = -2; deltaY < 3; deltaY++) {
-						for (int deltaX = -2; deltaX < 3; deltaX++) {
+					for (int deltaY = -1; deltaY < 2; deltaY++) {
+						for (int deltaX = -1; deltaX < 2; deltaX++) {
 							// La position du pion trouv� est exclue
 							if (deltaY != 0 && deltaX != 0) {
 								// Si une place libre est trouv�e elle est ajout�e à la liste des coups
 								try {
-									if ((this.board[y+deltaY][x+deltaX]==0)) {
+									if (this.board[y+deltaY][x+deltaX]==0) {
 										moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+deltaY, x+deltaX)));
+									}
+									if(deltaX == 0 ^ deltaY == 0){
+										if(this.board[y+2*deltaY][x+2*deltaX] == 0)
+											moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+2*deltaY, x+2*deltaX)));
+
 									}
 								} catch(ArrayIndexOutOfBoundsException ignored) {}
 							}
