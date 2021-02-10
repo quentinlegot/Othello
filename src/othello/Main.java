@@ -12,11 +12,8 @@ public class Main {
 		while(!game.isOver()) {
 			int player = game.getCurrentPlayer();
 			ArrayList<Pair<Point, Point>> moves = game.getMove(player);
+			
 		}
-		ArrayList<Point> a = new ArrayList<>();
-		a.add(new Point(3,3));
-		System.out.println(game.getMove(p1).toString());
-		//System.out.println(a.get(0).toString());
 	}
 	
 	public static int[][] initialize(int p1, int p2){
