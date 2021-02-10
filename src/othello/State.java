@@ -1,6 +1,5 @@
 package othello;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 public class State {
@@ -26,45 +25,40 @@ public class State {
 	}
 	
 	public boolean isOver() {
-		
-		return false;
+		if(n1 == 0 || n2 == 0)
+			return true;
+		return getMove(player1).isEmpty() && getMove(player2).isEmpty();
 	}
 	
-	public ArrayList<Point> getMove(int player) {
-	ArrayList<Point> moves = new ArrayList<Point>();
-		
-		// Clonage
+	public ArrayList<Pair<Point, Point>> getMove(int player) {
+		// Pair<Depart, Arrivee>
+		ArrayList<Pair<Point, Point>> moves = new ArrayList<>();
 		// Parcours du plateau de jeu
-		for (int i=0; i<this.board.length;i++) {
-			for (int j=0; j<this.board.length; j++) {
-				if (this.board[i][j] == this.currentPlayer) {
+		for (int y = 0; y < this.board.length; y++) {
+			for (int x = 0; x < this.board[y].length; x++) {
+				if (this.board[y][x] == player) {
 					// Recherche autour du pion du joueur courant
-					for (int k=-1; k<2;k++) {
-						for (int l=-1; l<2; l++) {
-							// La position du pion trouv� est exclue
-							if (k!=0 || l!=0) {
-								// Si une place libre est trouvée elle est ajoutée à la liste de coups
-								if ( ((i+k >= 0) && (i+k < 7 )) && ((j+l >= 0) && (j+l < 7 )) && (this.board[i+k][j+l]==0)) {
-									moves.add(new Point(i+k, j+l));
-								}
+					for (int deltaY = -2; deltaY < 3; deltaY++) {
+						for (int deltaX = -2; deltaX < 3; deltaX++) {
+							// La position du pion trouv� est exclue
+							if (deltaY != 0 && deltaX != 0) {
+								// Si une place libre est trouv�e elle est ajout�e à la liste des coups
+								try {
+									if ((this.board[y+deltaY][x+deltaX]==0)) {
+										moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+deltaY, x+deltaX)));
+									}
+								} catch(ArrayIndexOutOfBoundsException ignored) {}
 							}
 						}
 					}
 				}
 			}
 		}
-		
-		// Saut
-		
-		
 		return moves;
 	}
 	
 	public int getScore(int player) {
-		if (currentPlayer == 1)
-			return n1/(n1+n2);
-		else
-			return n2/(n2+n1);
+		return currentPlayer == player1 ? n1/(n1+n2) : n2/(n2+n1);
 	}
 	
 	public State play(int x, int y) {
@@ -75,15 +69,15 @@ public class State {
 			for(int z = -1;z<2;z++){
 				try {
 					copy.board[x+i][y+z] = copy.getCurrentPlayer();
-					increment+=1;		
+					increment++;		
 				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
-		if (currentPlayer == 1){
+		if (currentPlayer == player1)
 			copy.n1 += increment;
-		}else{
+		else
 			copy.n2 += increment;
-		}
+		
 		copy.switchPlayer();
 		return copy;
 	}
@@ -105,7 +99,7 @@ public class State {
 		return copy;
 	}
 	
-	public void switchPlayer () {
+	public void switchPlayer() {
 		setCurrentPlayer(getCurrentPlayer() == this.player1 ? player2 : player1);
 	}
 	
