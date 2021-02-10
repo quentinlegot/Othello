@@ -14,4 +14,9 @@ public class Point {
 		return Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2) == 4;
 	}
 	
+	@Override
+	public String toString () {
+		return "("+x+","+y+")";
+	}
+	
 }

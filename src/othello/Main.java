@@ -9,11 +9,13 @@ public class Main {
 		int p1 = 1, p2 = 2;
 		int[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
-		while(!game.isOver()) {
+		board[1][5]=game.getCurrentPlayer();
+		/*while(!game.isOver()) {
 			int player = game.getCurrentPlayer();
 			ArrayList<Pair<Point, Point>> moves = game.getMove(player);
-			
-		}
+		} */
+		ArrayList<Pair<Point, Point>> moves = game.getMove(game.getCurrentPlayer());
+		System.out.println(moves.toString());
 	}
 	
 	public static int[][] initialize(int p1, int p2){
