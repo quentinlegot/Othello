@@ -47,7 +47,7 @@ public class State {
 									if (this.board[y+deltaY][x+deltaX]==0) {
 										moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+deltaY, x+deltaX)));
 									}
-									if(deltaX == 0 ^ deltaY == 0){
+									if(this.board[y+deltaY][x+deltaX]!=0){
 										if(this.board[y+2*deltaY][x+2*deltaX] == 0)
 											moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+2*deltaY, x+2*deltaX)));
 
