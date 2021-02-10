@@ -36,12 +36,25 @@ public class State {
 					// Recherche autour du pion du joueur courant
 					for (int k=-1; k<2;k++) {
 						for (int l=-1; l<2; l++) {
+<<<<<<< HEAD
 							// La position du pion trouvé est exclue
 							if (k!=0 || l!=0) {
 								// Si une place libre est trouvée elle est ajoutée à la liste de coups
 								if ( ((i+k >= 0) && (i+k < 7 )) && ((j+l >= 0) && (j+l < 7 )) && (this.board[i+k][j+l]==0)) {
+=======
+<<<<<<< HEAD
+							if (k!=0 || l!=0) {			
+=======
+							// La position du pion trouv� est exclue
+							if (k!=0 || l!=0) {
+								// Si une place libre est trouv�e elle est ajout� � la liste de coups
+								System.out.println("close");
+								if ( (this.board[i+k][j+l]==0) && (i+k >= 0) && (i+k < 7 ) && (j+l >= 0) && (j+l < 7 ) ) {
+									System.out.println("jadd");
+>>>>>>> 2263d0614b420497f888985e269e89cd19670bab
+>>>>>>> a28cb1daa55fe0e031900c11927481008e642a1b
 									moves.add(new Point(i+k, j+l));
-								}
+								
 							}
 						}
 					}
