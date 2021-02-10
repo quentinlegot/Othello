@@ -7,6 +7,14 @@ public class Main {
 
 	
 	public static void main(String[] args) {
+		for (int k=-1; k<2;k++) {
+			for (int l=-1; l<2; l++) {
+				if (k!=0 || l!=0) {			
+						System.out.println(k+";"+l);
+					
+				}
+			}
+		}
 		int p1 = 1, p2 = 2;
 		int[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);

@@ -33,14 +33,9 @@ public class State {
 					System.out.println("recherche");
 					for (int k=-1; k<2;k++) {
 						for (int l=-1; l<2; l++) {
-							// La position du pion trouvé est exclue
-							if (k!=0 || l!=0) {
-								// Si une place libre est trouvée elle est ajouté à la liste de coups
-								System.out.println("close");
-								if ( (this.board[i+k][j+l]==0) && (i+k >= 0) && (i+k < 7 ) && (j+l >= 0) && (j+l < 7 ) ) {
-									System.out.println("jadd");
+							if (k!=0 || l!=0) {			
 									moves.add(new Point(i+k, j+l));
-								}
+								
 							}
 						}
 					}
