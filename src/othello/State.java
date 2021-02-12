@@ -2,16 +2,18 @@ package othello;
 
 import java.util.ArrayList;
 
+import othello.players.AbstractPlayer;
+
 public class State {
 
-	private int[][] board;
-	private int player1;
-	private int player2;
-	private int currentPlayer;
+	private AbstractPlayer[][] board;
+	private AbstractPlayer player1;
+	private AbstractPlayer player2;
+	private AbstractPlayer currentPlayer;
 	private int n1;
 	private int n2;
 
-	public State(int[][] board, int p1, int p2, int n1, int n2) {
+	public State(AbstractPlayer[][] board, AbstractPlayer p1, AbstractPlayer p2, int n1, int n2) {
 		this.board = board;
 		this.player1 = p1;
 		this.player2 = p2;
@@ -20,7 +22,7 @@ public class State {
 		this.n2 = n2;
 	}
 	
-	public State(int[][] board, int p1, int p2) {
+	public State(AbstractPlayer[][] board, AbstractPlayer p1, AbstractPlayer p2) {
 		this(board, p1, p2, 2, 2);
 	}
 	
@@ -30,7 +32,7 @@ public class State {
 		return getMove(player1).isEmpty() && getMove(player2).isEmpty();
 	}
 	
-	public ArrayList<Pair<Point, Point>> getMove(int player) {
+	public ArrayList<Pair<Point, Point>> getMove(AbstractPlayer player) {
 		// Pair<Depart, Arrivee>
 		ArrayList<Pair<Point, Point>> moves = new ArrayList<>();
 		// Parcours du plateau de jeu
@@ -44,11 +46,10 @@ public class State {
 							if (deltaY != 0 && deltaX != 0) {
 								// Si une place libre est trouv�e elle est ajout�e à la liste des coups
 								try {
-									if (this.board[y+deltaY][x+deltaX]==0) {
+									if (this.board[y+deltaY][x+deltaX] == null) {
 										moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+deltaY, x+deltaX)));
-									}
-									if(this.board[y+deltaY][x+deltaX]!=0){
-										if(this.board[y+2*deltaY][x+2*deltaX] == 0)
+									} else {
+										if(this.board[y+2*deltaY][x+2*deltaX] == null)
 											moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+2*deltaY, x+2*deltaX)));
 									}
 								} catch(ArrayIndexOutOfBoundsException ignored) {}
@@ -61,7 +62,7 @@ public class State {
 		return moves;
 	}
 	
-	public int getScore(int player) {
+	public int getScore(AbstractPlayer player) {
 		return currentPlayer == player1 ? n1/(n1+n2) : n2/(n2+n1);
 	}
 	
@@ -87,11 +88,11 @@ public class State {
 		copy.switchPlayer();
 		return copy;
 	}
-	public int getCurrentPlayer() {
+	public AbstractPlayer getCurrentPlayer() {
 		return currentPlayer;
 	}
 	
-	public void setCurrentPlayer(int currentPlayer) {
+	public void setCurrentPlayer(AbstractPlayer currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
 
@@ -107,6 +108,14 @@ public class State {
 	
 	public void switchPlayer() {
 		setCurrentPlayer(getCurrentPlayer() == this.player1 ? player2 : player1);
+	}
+	
+	/**
+	 * TODO: display the current state of the board
+	 */
+	@Override
+	public String toString() {
+		return null;
 	}
 	
 }
