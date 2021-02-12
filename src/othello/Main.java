@@ -19,7 +19,7 @@ public class Main {
 			AbstractPlayer player = game.getCurrentPlayer();
 			ArrayList<Pair<Point, Point>> moves = game.getMove(player);
 			System.out.println(game.toString());
-			game.play(player.play(moves));
+			game = game.play(player.play(moves));
 		}
 		System.out.println("C'est " + game.getWinner() + " qui a gagné");
 	}
