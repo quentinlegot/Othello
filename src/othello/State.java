@@ -65,16 +65,17 @@ public class State {
 		return currentPlayer == player1 ? n1/(n1+n2) : n2/(n2+n1);
 	}
 	
-	public State play(Pair<Point,Point> paire) {
+	public State play(Pair<Point,Point> pair) {
 		State copy = this.copy();
-		copy.board[paire.getLeft.getX][paire.getLeft.getY] = copy.getCurrentPlayer();
+		copy.board[pair.getLeft().getX()][pair.getLeft().getY()] = copy.getCurrentPlayer();
 		int increment = 0;
 		for(int i = -1; i<2;i++){
 			for(int z = -1;z<2;z++){
 				try {
-					if(copy.board[paire.getLeft.getX+i][paire.getLeft.getY+z] != copy.getCurrentPlayer()){
+					if(copy.board[pair.getLeft().getX() + i][pair.getLeft().getY() + z] != copy.getCurrentPlayer()){
 						increment++;
-					copy.board[paire.getLeft.getX+i][paire.getLeft.getY+z] = copy.getCurrentPlayer();	
+						copy.board[pair.getLeft().getX() + i][pair.getLeft().getY() + z] = copy.getCurrentPlayer();
+					}
 				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
