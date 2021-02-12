@@ -63,9 +63,18 @@ public class State {
 	}
 	
 	public int getScore(AbstractPlayer player) {
-		return currentPlayer == player1 ? n1/(n1+n2) : n2/(n2+n1);
+		return player == player1 ? n1/(n1+n2) : n2/(n2+n1);
 	}
-	
+
+	public AbstractPlayer getWinner() {
+		int scoreP1 = getScore(player1), scoreP2 = getScore(player2);
+		if(scoreP1 > scoreP2)
+			return player1;
+		else if(scoreP2 > scoreP1)
+			return player2;
+		return null;
+	}
+
 	public State play(Pair<Point,Point> pair) {
 		State copy = this.copy();
 		copy.board[pair.getLeft().getX()][pair.getLeft().getY()] = copy.getCurrentPlayer();
@@ -115,7 +124,20 @@ public class State {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		StringBuilder str = new StringBuilder();
+		for (int y = 0; y < board.length; y++) {
+			for (int x = 0; x < board.length; x++) {
+				if(board[y][x] == player1)
+					str.append("O");
+				else if(board[y][x] == player2)
+					str.append("X");
+				else
+					str.append(".");
+				str.append(" ");
+			}
+			str.append("\r\n");
+		}
+		return str.toString();
 	}
 	
 }

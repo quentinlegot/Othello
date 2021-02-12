@@ -13,15 +13,15 @@ public class Main {
 		AbstractPlayer p2 = new RandomPlayer();
 		AbstractPlayer[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
-		// board[1][5]=game.getCurrentPlayer();
+		System.out.println("joueur 1: " + p1);
+		System.out.println("joueur 2: " + p2);
 		while(!game.isOver()) {
 			AbstractPlayer player = game.getCurrentPlayer();
 			ArrayList<Pair<Point, Point>> moves = game.getMove(player);
-			game.toString();
-			player.play(moves);
+			System.out.println(game.toString());
+			game.play(player.play(moves));
 		}
-		// ArrayList<Pair<Point, Point>> moves = game.getMove(game.getCurrentPlayer());
-		// System.out.println(moves.toString());
+		System.out.println("C'est " + game.getWinner() + " qui a gagné");
 	}
 	
 	public static AbstractPlayer[][] initialize(AbstractPlayer p1, AbstractPlayer p2){
