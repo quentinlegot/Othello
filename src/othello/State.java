@@ -2,18 +2,18 @@ package othello;
 
 import java.util.ArrayList;
 
-import othello.players.AbstractPlayer;
+import othello.players.Player;
 
 public class State {
 
-	private AbstractPlayer[][] board;
-	private AbstractPlayer player1;
-	private AbstractPlayer player2;
-	private AbstractPlayer currentPlayer;
+	private Player[][] board;
+	private Player player1;
+	private Player player2;
+	private Player currentPlayer;
 	private int n1;
 	private int n2;
 
-	public State(AbstractPlayer[][] board, AbstractPlayer p1, AbstractPlayer p2, int n1, int n2) {
+	public State(Player[][] board, Player p1, Player p2, int n1, int n2) {
 		this.board = board;
 		this.player1 = p1;
 		this.player2 = p2;
@@ -22,7 +22,7 @@ public class State {
 		this.n2 = n2;
 	}
 	
-	public State(AbstractPlayer[][] board, AbstractPlayer p1, AbstractPlayer p2) {
+	public State(Player[][] board, Player p1, Player p2) {
 		this(board, p1, p2, 2, 2);
 	}
 	
@@ -32,7 +32,7 @@ public class State {
 		return getMove(player1).isEmpty() && getMove(player2).isEmpty();
 	}
 	
-	public ArrayList<Pair<Point, Point>> getMove(AbstractPlayer player) {
+	public ArrayList<Pair<Point, Point>> getMove(Player player) {
 		// Pair<Depart, Arrivee>
 		ArrayList<Pair<Point, Point>> moves = new ArrayList<>();
 		// Parcours du plateau de jeu
@@ -64,11 +64,11 @@ public class State {
 		return moves;
 	}
 	
-	public int getScore(AbstractPlayer player) {
+	public int getScore(Player player) {
 		return player == player1 ? n1/(n1+n2) : n2/(n2+n1);
 	}
 
-	public AbstractPlayer getWinner() {
+	public Player getWinner() {
 		int scoreP1 = getScore(player1), scoreP2 = getScore(player2);
 		if(scoreP1 > scoreP2)
 			return player1;
@@ -99,11 +99,11 @@ public class State {
 		copy.switchPlayer();
 		return copy;
 	}
-	public AbstractPlayer getCurrentPlayer() {
+	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
 	
-	public void setCurrentPlayer(AbstractPlayer currentPlayer) {
+	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
 
