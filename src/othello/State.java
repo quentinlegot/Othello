@@ -1,40 +1,45 @@
 package othello;
 
-import java.util.ArrayList;
-
 import othello.players.Player;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class State {
 
-	private Player[][] board;
-	private Player player1;
-	private Player player2;
+	public static List<State> previousSituations = new LinkedList<>();
+
+	private final Player[][] board;
+	private final Player player1;
+	private final Player player2;
 	private Player currentPlayer;
 	private int n1;
 	private int n2;
 
-	public State(Player[][] board, Player p1, Player p2, int n1, int n2) {
+	public State(Player[][] board, Player p1, Player p2) {
 		this.board = board;
 		this.player1 = p1;
 		this.player2 = p2;
 		currentPlayer = p1;
-		this.n1 = n1;
-		this.n2 = n2;
-	}
-	
-	public State(Player[][] board, Player p1, Player p2) {
-		this(board, p1, p2, 2, 2);
+		this.n1 = 2;
+		this.n2 = 2;
 	}
 	
 	public boolean isOver() {
-		if(n1 == 0 || n2 == 0)
-			return true;
-		return getMove(player1).isEmpty() && getMove(player2).isEmpty();
+		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty());
+	}
+
+	public Player getPlayerById(int id) {
+		if(id == 1)
+			return player1;
+		else if(id == -1)
+			return player2;
+		throw new IllegalArgumentException("Invalid player id: " + id);
 	}
 	
-	public ArrayList<Pair<Point, Point>> getMove(Player player) {
+	public LinkedList<Pair<Point, Point>> getMove(Player player) {
 		// Pair<Depart, Arrivee>
-		ArrayList<Pair<Point, Point>> moves = new ArrayList<>();
+		LinkedList<Pair<Point, Point>> moves = new LinkedList<>();
 		// Parcours du plateau de jeu
 		for (int y = 0; y < this.board.length; y++) {
 			for (int x = 0; x < this.board[y].length; x++) {
@@ -43,19 +48,16 @@ public class State {
 					for (int deltaY = -1; deltaY < 2; deltaY++) {
 						for (int deltaX = -1; deltaX < 2; deltaX++) {
 							// La position du pion trouvée est exclue
-							if (deltaY != 0 && deltaX != 0) {
 								// Si une place libre est trouvée elle est ajoutée à la liste des coups
 								try {
+									Point current = new Point(y, x);
 									if (this.board[y+deltaY][x+deltaX] == null) {
-										moves.add(new Pair<Point, Point>(new Point(y, x), new Point(y+deltaY, x+deltaX)));
-									} else {
-										Point current = new Point(y, x);
-										Point other = new Point(y + 2 * deltaY, x + 2 * deltaX);
-										if(this.board[y+2*deltaY][x+2*deltaX] == null && current.isJump(other))
-											moves.add(new Pair<Point, Point>(current, other));
+										moves.add(new Pair<>(current, new Point(y + deltaY, x + deltaX)));
 									}
+									Point other = new Point(y + 2 * deltaY, x + 2 * deltaX);
+									if(this.board[other.getY()][other.getX()] == null && current.isJump(other))
+										moves.add(new Pair<>(current, other));
 								} catch(ArrayIndexOutOfBoundsException ignored) {}
-							}
 						}
 					}
 				}
@@ -65,7 +67,7 @@ public class State {
 	}
 	
 	public int getScore(Player player) {
-		return player == player1 ? n1/(n1+n2) : n2/(n2+n1);
+		return player == player1 ? n1 : n2;
 	}
 
 	public Player getWinner() {
@@ -77,25 +79,32 @@ public class State {
 		return null;
 	}
 
-	public State play(Pair<Point,Point> pair) {
+	public State play(Pair<Point,Point> move) {
 		State copy = this.copy();
-		copy.board[pair.getLeft().getX()][pair.getLeft().getY()] = copy.getCurrentPlayer();
-		int increment = 0;
+		copy.board[move.getRight().getY()][move.getRight().getX()] = copy.getCurrentPlayer();
 		for(int i = -1; i < 2; i++){
 			for(int z = -1; z < 2; z++){
 				try {
-					if(copy.board[pair.getLeft().getX() + i][pair.getLeft().getY() + z] != copy.getCurrentPlayer()){
-						increment++;
-						copy.board[pair.getLeft().getX() + i][pair.getLeft().getY() + z] = copy.getCurrentPlayer();
+					if(copy.board[move.getRight().getY() + i][move.getRight().getX() + z] != copy.getCurrentPlayer()
+							&& !move.getLeft().isJump(move.getRight())){
+						copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.getCurrentPlayer();
 					}
 				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
-		if (copy.currentPlayer == player1)
-			copy.n1 += increment;
-		else
-			copy.n2 += increment;
-
+		int ni = 0, nj = 0;
+		for(int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board[i].length; j++) {
+				if(board[i][j] == player1){
+					ni++;
+				}
+				if(board[i][j] == player2){
+					nj++;
+				}
+			}
+		}
+		copy.n1 = ni;
+		copy.n2 = nj;
 		copy.switchPlayer();
 		return copy;
 	}
@@ -108,13 +117,13 @@ public class State {
 	}
 
 	public State copy () {
-		State copy = new State(this.board, this.player1, this.player2, this.n1, this.n2);
+		State copy = new State(this.board, this.player1, this.player2);
 		for (int i = 0; i < this.board.length; i++) {
-			for (int j = 0; j < this.board.length; j++) {
-				copy.board[i][j] = this.board[i][j];
-			}
+			System.arraycopy(this.board[i], 0, copy.board[i], 0, this.board.length);
 		}
 		copy.setCurrentPlayer(this.currentPlayer);
+		copy.n1 = n1;
+		copy.n2 = n2;
 		return copy;
 	}
 	
@@ -128,11 +137,11 @@ public class State {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		for (int y = 0; y < board.length; y++) {
+		for (Player[] players : board) {
 			for (int x = 0; x < board.length; x++) {
-				if(board[y][x] == player1)
+				if (players[x] == player1)
 					str.append("O");
-				else if(board[y][x] == player2)
+				else if (players[x] == player2)
 					str.append("X");
 				else
 					str.append(".");

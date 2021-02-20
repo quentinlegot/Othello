@@ -1,13 +1,17 @@
 package othello.players;
 
-import java.util.ArrayList;
-
 import othello.Pair;
 import othello.Point;
 import othello.State;
 
-public interface Player {
+public abstract class Player {
 
-	public Pair<Point, Point> play(ArrayList<Pair<Point, Point>> moves, State board, Player player);
+	protected final int id;
+
+	public Player(int id) {
+		this.id = id;
+	}
+
+	public abstract Pair<Point, Point> play(State board);
 
 }
