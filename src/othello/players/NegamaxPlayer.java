@@ -12,19 +12,33 @@ public class NegamaxPlayer extends Player {
 
     @Override
     public Pair<Point, Point> play(State game) {
-        return game.getMove(this).get(negamax(game, 10, this.id));
+        Integer bestValue = null;
+        Pair<Point, Point> bestMove = null;
+        for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
+            int v = negamax(game.play(move),10,-id);
+            if(bestValue == null || v > bestValue) {
+                bestValue = v;
+                bestMove = move;
+            }
+        }
+        return bestMove;
     }
 
     private int negamax(State game, int depth, int id) {
         if(depth == 0 || game.isOver()) {
-            return id;
+            if(game.getWinner() == game.getCurrentPlayer())
+                return game.getWinner().getId();
+            else if(game.getWinner() != null)
+                return game.getWinner().getId();
+            return 0;
         }
-        int value = Integer.MIN_VALUE;
+        Integer value = null;
         Player player = game.getPlayerById(id);
         for(Pair<Point, Point> move : game.getMove(player)) {
-            game = game.play(move);
-            game.setCurrentPlayer(player);
-            value = Math.max(value, -negamax(game, depth - 1, -id));
+            int v = negamax(game.play(move),10,-id);
+            if(value == null || v>value){
+                value = v;
+            }
         }
         return value;
     }

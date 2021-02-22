@@ -1,5 +1,6 @@
 package othello;
 
+import othello.players.NegamaxPlayer;
 import othello.players.Player;
 import othello.players.RandomPlayer;
 
@@ -8,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Player p1 = new RandomPlayer(1);
-		Player p2 = new RandomPlayer(-1);
+		Player p2 = new NegamaxPlayer(-1);
 		Player[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
 		System.out.println("joueur 1: " + p1);
