@@ -6,12 +6,12 @@ import othello.State;
 
 public abstract class Player {
 
-	protected final int id;
+	protected final int depth;
 
-	public Player(int id) {
-		this.id = id;
+	public Player(int depth) {
+		this.depth = depth;
 	}
 
-	public abstract Pair<Point, Point> play(State board,int depth);
+	public abstract Pair<Point, Point> play(State board);
 
 }

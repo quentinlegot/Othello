@@ -2,14 +2,13 @@ package othello;
 
 import othello.players.NegamaxPlayer;
 import othello.players.Player;
-import othello.players.RandomPlayer;
 
 public class Main {
 
 
 	public static void main(String[] args) {
 		Player p1 = new NegamaxPlayer(1);
-		Player p2 = new RandomPlayer(-1);
+		Player p2 = new NegamaxPlayer(100);
 		Player[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
 		System.out.println("joueur 1: " + p1);
@@ -17,7 +16,7 @@ public class Main {
 		while(!game.isOver()) {
 			Player player = game.getCurrentPlayer();
 			System.out.println(game.toString());
-			game = game.play(player.play(game,100));
+			game = game.play(player.play(game));
 		}
 		System.out.println(game.toString());
 		System.out.println(game.getWinner() + " a gagné la partie");

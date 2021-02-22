@@ -17,7 +17,7 @@ public class RandomPlayer extends Player {
 	}
 
 	@Override
-	public Pair<Point, Point> play(State game, int depth) {
+	public Pair<Point, Point> play(State game) {
 		LinkedList<Pair<Point, Point>> moves = game.getMove(this);
 		return moves.get(random.nextInt(moves.size()));
 	}

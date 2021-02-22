@@ -6,12 +6,12 @@ import othello.State;
 
 public class NegamaxPlayer extends Player {
 
-    public NegamaxPlayer(int id) {
-        super(id);
+    public NegamaxPlayer(int depth) {
+        super(depth);
     }
 
     @Override
-    public Pair<Point, Point> play(State game,int depth) {
+    public Pair<Point, Point> play(State game) {
         int bestValue = Integer.MIN_VALUE;
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
