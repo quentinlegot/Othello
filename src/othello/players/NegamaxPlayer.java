@@ -11,34 +11,35 @@ public class NegamaxPlayer extends Player {
     }
 
     @Override
-    public Pair<Point, Point> play(State game) {
-        Integer bestValue = null;
+    public Pair<Point, Point> play(State game,int depth) {
+        int bestValue = Integer.MIN_VALUE;
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
-            int v = negamax(game.play(move),10,-id);
-            if(bestValue == null || v > bestValue) {
-                bestValue = v;
+            State nextState = game.play(move);
+            int value = -negamax(nextState,depth);
+            if(value > bestValue){
+                bestValue = value;
                 bestMove = move;
             }
         }
+        System.out.println("Negamax à joué");
         return bestMove;
     }
 
-    private int negamax(State game, int depth, int id) {
+    private Integer negamax(State game, int depth) {
         if(depth == 0 || game.isOver()) {
-            if(game.getWinner() == game.getCurrentPlayer())
-                return game.getWinner().getId();
-            else if(game.getWinner() != null)
-                return game.getWinner().getId();
-            return 0;
-        }
-        Integer value = null;
-        Player player = game.getPlayerById(id);
-        for(Pair<Point, Point> move : game.getMove(player)) {
-            int v = negamax(game.play(move),10,-id);
-            if(value == null || v>value){
-                value = v;
+            int score1 = game.getScore(game.player1);
+            int score2 = game.getScore(game.player2);
+            if (game.getCurrentPlayer() == game.player1){
+                return score1 >= score2 ? score1 : -score2;
             }
+            else{
+                return score1 >= score2 ? score2 : -score1;
+            }
+        }
+        int value = Integer.MIN_VALUE;
+        for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
+            value = Math.max(value, -negamax(game.play(move),depth-1));
         }
         return value;
     }

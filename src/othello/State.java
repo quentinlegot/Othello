@@ -9,12 +9,12 @@ public class State {
 
 	public static List<State> previousSituations = new LinkedList<>();
 
-	private final Player[][] board;
-	private final Player player1;
-	private final Player player2;
-	private Player currentPlayer;
-	private int n1;
-	private int n2;
+	public Player[][] board;
+	public Player player1;
+	public Player player2;
+	public Player currentPlayer;
+	public int n1;
+	public int n2;
 
 	public State(Player[][] board, Player p1, Player p2) {
 		this.board = board;
@@ -55,7 +55,7 @@ public class State {
 										moves.add(new Pair<>(current, new Point(y + deltaY, x + deltaX)));
 									}
 									Point other = new Point(y + 2 * deltaY, x + 2 * deltaX);
-									if(this.board[other.getY()][other.getX()] == null && current.isJump(other))
+									if(this.board[other.getY()][other.getX()] == null && current.isJump(other,this))
 										moves.add(new Pair<>(current, other));
 								} catch(ArrayIndexOutOfBoundsException ignored) {}
 						}
@@ -85,20 +85,17 @@ public class State {
 		for(int i = -1; i < 2; i++){
 			for(int z = -1; z < 2; z++){
 				try {
-					if(copy.board[move.getRight().getY() + i][move.getRight().getX() + z] != copy.getCurrentPlayer()
-							&& !move.getLeft().isJump(move.getRight())){
 						copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.getCurrentPlayer();
-					}
 				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
 		int ni = 0, nj = 0;
-		for(int i = 0; i < board.length; i++) {
-			for(int j = 0; j < board[i].length; j++) {
-				if(board[i][j] == player1){
+		for (Player[] players : board) {
+			for (Player player : players) {
+				if (player == player1) {
 					ni++;
 				}
-				if(board[i][j] == player2){
+				else if (player == player2) {
 					nj++;
 				}
 			}
@@ -111,7 +108,7 @@ public class State {
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
-	
+
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}

@@ -9,10 +9,9 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
-	
-	public boolean isJump(Point other) {
-		double value = Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2);
-		return  value == 4 || value == 8;
+
+	public boolean isJump(Point other,State game) {
+		return (game.board[(x+other.getX())/2][(y+other.getY())/2] != null);
 	}
 
 	public int getX(){
