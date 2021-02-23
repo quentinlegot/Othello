@@ -59,7 +59,7 @@ public class State {
 	}
 	
 	public int getScore(Player player) {
-		return player == player1 ? n1 : n2;
+		return player == player1 ? (n1/(n1+n2)) : (n2/(n1+n2));
 	}
 
 	public Player getWinner() {
@@ -73,15 +73,18 @@ public class State {
 
 	public State play(Pair<Point,Point> move) {
 		State copy = this.copy();
-		copy.board[move.getRight().getY()][move.getRight().getX()] = copy.getCurrentPlayer();
-		if(move.getLeft().isJump(move.getRight(),copy.board)){
-			copy.board[move.getLeft().getY()][move.getLeft().getX()] = null;
-		}
-		for(int i = -1; i < 2; i++){
-			for(int z = -1; z < 2; z++){
-				try {
-					copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.getCurrentPlayer();
-				}catch (IndexOutOfBoundsException ignored) {}
+		if(move!=null) {
+			copy.board[move.getRight().getY()][move.getRight().getX()] = copy.currentPlayer;
+			if (move.getLeft().isJump(move.getRight(), copy.board)) {
+				copy.board[move.getLeft().getY()][move.getLeft().getX()] = null;
+			}
+			for (int i = -1; i < 2; i++) {
+				for (int z = -1; z < 2; z++) {
+					try {
+						copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.currentPlayer;
+					} catch (IndexOutOfBoundsException ignored) {
+					}
+				}
 			}
 		}
 		int ni = 0, nj = 0;

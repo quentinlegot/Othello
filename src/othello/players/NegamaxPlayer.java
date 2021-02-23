@@ -6,7 +6,6 @@ import othello.State;
 
 public class NegamaxPlayer extends Player {
 
-
     public NegamaxPlayer(int depth) {
         super(depth);
     }
@@ -16,9 +15,8 @@ public class NegamaxPlayer extends Player {
         int bestValue = Integer.MIN_VALUE;
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
-            State nextState = game.copy();
-            nextState.play(move);
-            int value = -negamax(nextState, depth);
+            State nextState = game.play(move);
+            int value = -negamax(nextState, this.depth,Integer.MIN_VALUE,Integer.MAX_VALUE);
             if (value > bestValue) {
                 bestValue = value;
                 bestMove = move;
@@ -27,17 +25,29 @@ public class NegamaxPlayer extends Player {
         return bestMove;
     }
 
-    private Integer negamax(State game, int depth) {
-        if(depth == 0 || game.isOver()) {
-            return game.getScore(game.getCurrentPlayer());
+    private int negamax(State state, int depth,int alpha,int beta) {
+        if(depth == 0 || state.isOver()) {
+            return evaluate(state);
         }
-        int bestValue = Integer.MIN_VALUE;
-        for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
-            State nextState = game.copy();
-            bestValue = Math.max(bestValue,-negamax(nextState.play(move),depth-1));
-
+        else{
+            int m = Integer.MIN_VALUE;
+            for (Pair<Point, Point> move : state.getMove(state.getCurrentPlayer())) {
+                State nextState = state.play(move);
+                m= Math.max(m,-negamax(nextState,depth-1,alpha,beta));
+                alpha = Math.max(alpha, m);
+                if(alpha >= beta)
+                    break;
+            }
+            return m;
         }
-        return bestValue;
+    }
+    private int evaluate(State game){
+        Player winner = game.getWinner();
+        if(winner == null)
+            return 0;
+        else if(winner == game.getCurrentPlayer())
+            return 1;
+        return -1;
     }
 
 }
