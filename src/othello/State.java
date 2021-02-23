@@ -146,5 +146,17 @@ public class State {
 		}
 		return str.toString();
 	}
-	
+	@Override
+	public boolean equals(Object state) {
+		boolean bool;
+		bool = ( state instanceof State);
+		bool = bool && (this.getCurrentPlayer() ==  ((State) state).getCurrentPlayer()) && (this.player1 == ((State) state).player1) && (this.player2 == ((State) state).player2);
+		bool = bool && (this.n1 == ((State)state).n1)&& (this.n2 == ((State)state).n2);
+		for (int i = 0; i < this.board.length; i++) {
+			for (int y = 0; y < this.board.length; y++){
+				bool = bool && (this.board[i][y] == ((State)state).board[i][y]);
+			}
+		}
+		return bool;
+	}
 }

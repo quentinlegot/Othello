@@ -16,7 +16,7 @@ public class NegamaxPlayer extends Player {
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
             State nextState = game.play(move);
-            int value = -negamax(nextState, this.depth,Integer.MIN_VALUE,Integer.MAX_VALUE);
+            int value = -negamax(nextState, this.depth);
             if (value > bestValue) {
                 bestValue = value;
                 bestMove = move;
@@ -25,7 +25,7 @@ public class NegamaxPlayer extends Player {
         return bestMove;
     }
 
-    private int negamax(State state, int depth,int alpha,int beta) {
+    private int negamax(State state, int depth) {
         if(depth == 0 || state.isOver()) {
             return evaluate(state);
         }
@@ -33,10 +33,7 @@ public class NegamaxPlayer extends Player {
             int m = Integer.MIN_VALUE;
             for (Pair<Point, Point> move : state.getMove(state.getCurrentPlayer())) {
                 State nextState = state.play(move);
-                m= Math.max(m,-negamax(nextState,depth-1,alpha,beta));
-                alpha = Math.max(alpha, m);
-                if(alpha >= beta)
-                    break;
+                m= Math.max(m,-negamax(nextState,depth-1));
             }
             return m;
         }
