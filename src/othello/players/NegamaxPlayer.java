@@ -6,6 +6,7 @@ import othello.State;
 
 public class NegamaxPlayer extends Player {
 
+
     public NegamaxPlayer(int depth) {
         super(depth);
     }
@@ -15,33 +16,28 @@ public class NegamaxPlayer extends Player {
         int bestValue = Integer.MIN_VALUE;
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
-            State nextState = game.play(move);
-            int value = -negamax(nextState,depth);
-            if(value > bestValue){
+            State nextState = game.copy();
+            nextState.play(move);
+            int value = -negamax(nextState, depth);
+            if (value > bestValue) {
                 bestValue = value;
                 bestMove = move;
             }
         }
-        System.out.println("Negamax à joué");
         return bestMove;
     }
 
     private Integer negamax(State game, int depth) {
         if(depth == 0 || game.isOver()) {
-            int score1 = game.getScore(game.player1);
-            int score2 = game.getScore(game.player2);
-            if (game.getCurrentPlayer() == game.player1){
-                return score1 >= score2 ? score1 : -score2;
-            }
-            else{
-                return score1 >= score2 ? score2 : -score1;
-            }
+            return game.getScore(game.getCurrentPlayer());
         }
-        int value = Integer.MIN_VALUE;
+        int bestValue = Integer.MIN_VALUE;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
-            value = Math.max(value, -negamax(game.play(move),depth-1));
+            State nextState = game.copy();
+            bestValue = Math.max(bestValue,-negamax(nextState.play(move),depth-1));
+
         }
-        return value;
+        return bestValue;
     }
 
 }

@@ -11,8 +11,8 @@ public class RandomPlayer extends Player {
 
 	Random random;
 
-	public RandomPlayer(int id) {
-		super(id);
+	public RandomPlayer(int depth) {
+		super(depth);
 		random = new Random();
 	}
 

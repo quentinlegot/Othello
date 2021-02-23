@@ -1,5 +1,7 @@
 package othello;
 
+import othello.players.Player;
+
 public class Point {
 
 	private int x;
@@ -10,8 +12,8 @@ public class Point {
 		this.y = y;
 	}
 
-	public boolean isJump(Point other,State game) {
-		return (game.board[(x+other.getX())/2][(y+other.getY())/2] != null);
+	public boolean isJump(Point other, Player[][] board) {
+		return (board[(x+other.getX())/2][(y+other.getY())/2] != null);
 	}
 
 	public int getX(){

@@ -9,12 +9,12 @@ public class State {
 
 	public static List<State> previousSituations = new LinkedList<>();
 
-	public Player[][] board;
-	public Player player1;
-	public Player player2;
-	public Player currentPlayer;
-	public int n1;
-	public int n2;
+	private final Player[][] board;
+	private final Player player1;
+	private final Player player2;
+	private Player currentPlayer;
+	private int n1;
+	private int n2;
 
 	public State(Player[][] board, Player p1, Player p2) {
 		this.board = board;
@@ -29,12 +29,8 @@ public class State {
 		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty());
 	}
 
-	public Player getPlayerById(int id) {
-		if(id == 1)
-			return player1;
-		else if(id == -1)
-			return player2;
-		throw new IllegalArgumentException("Invalid player id: " + id);
+	public Player[][] getBoard(){
+		return this.board;
 	}
 	
 	public LinkedList<Pair<Point, Point>> getMove(Player player) {
@@ -55,7 +51,7 @@ public class State {
 										moves.add(new Pair<>(current, new Point(y + deltaY, x + deltaX)));
 									}
 									Point other = new Point(y + 2 * deltaY, x + 2 * deltaX);
-									if(this.board[other.getY()][other.getX()] == null && current.isJump(other,this))
+									if(this.board[other.getY()][other.getX()] == null && current.isJump(other,getBoard()))
 										moves.add(new Pair<>(current, other));
 								} catch(ArrayIndexOutOfBoundsException ignored) {}
 						}

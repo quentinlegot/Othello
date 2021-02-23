@@ -7,7 +7,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		Player p1 = new NegamaxPlayer(1);
+		Player p1 = new NegamaxPlayer(100);
 		Player p2 = new NegamaxPlayer(100);
 		Player[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
