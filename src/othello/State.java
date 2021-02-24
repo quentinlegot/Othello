@@ -107,18 +107,19 @@ public class State {
 		return currentPlayer;
 	}
 
-	public void setCurrentPlayer(Player currentPlayer) {
-		this.currentPlayer = currentPlayer;
+	public void setCurrentPlayer(Player player) {
+		this.currentPlayer = player;
 	}
 
 	public State copy () {
-		State copy = new State(this.board, this.player1, this.player2);
+		State copy = new State(new Player[7][7], this.player1, this.player2);
 		for (int i = 0; i < this.board.length; i++) {
-			System.arraycopy(this.board[i], 0, copy.board[i], 0, this.board.length);
+			System.arraycopy(this.board[i], 0, copy.board[i], 0, this.board[i].length);
 		}
-		copy.setCurrentPlayer(this.currentPlayer);
+		copy.setCurrentPlayer(this.getCurrentPlayer());
 		copy.n1 = n1;
 		copy.n2 = n2;
+
 		return copy;
 	}
 	
@@ -150,7 +151,8 @@ public class State {
 	public boolean equals(Object state) {
 		boolean bool;
 		bool = ( state instanceof State);
-		bool = bool && (this.getCurrentPlayer() ==  ((State) state).getCurrentPlayer()) && (this.player1 == ((State) state).player1) && (this.player2 == ((State) state).player2);
+		bool = bool && (this.getCurrentPlayer().equals(((State) state).getCurrentPlayer()));
+		bool = bool && (this.player1.equals(((State) state).player1)) && (this.player2.equals(((State) state).player2));
 		bool = bool && (this.n1 == ((State)state).n1)&& (this.n2 == ((State)state).n2);
 		for (int i = 0; i < this.board.length; i++) {
 			for (int y = 0; y < this.board.length; y++){

@@ -43,8 +43,12 @@ public class NegamaxPlayer extends Player {
         if(winner == null)
             return 0;
         else if(winner == game.getCurrentPlayer())
-            return 1;
-        return -1;
+            return -1;
+        return 1;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof NegamaxPlayer);
+    }
 }
