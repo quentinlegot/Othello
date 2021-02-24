@@ -14,4 +14,13 @@ public abstract class Player {
 
 	public abstract Pair<Point, Point> play(State board);
 
+	protected int evaluate(State game){
+		Player winner = game.getWinner();
+		if(winner == null)
+			return 0;
+		else if(winner == game.getCurrentPlayer())
+			return 1;
+		return -1;
+	}
+
 }

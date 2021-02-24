@@ -38,14 +38,6 @@ public class NegamaxPlayer extends Player {
             return m;
         }
     }
-    private int evaluate(State game){
-        Player winner = game.getWinner();
-        if(winner == null)
-            return 0;
-        else if(winner == game.getCurrentPlayer())
-            return -1;
-        return 1;
-    }
 
     @Override
     public boolean equals(Object obj) {
