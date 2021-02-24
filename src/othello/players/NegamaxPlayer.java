@@ -33,6 +33,7 @@ public class NegamaxPlayer extends Player {
             int m = Integer.MIN_VALUE;
             for (Pair<Point, Point> move : state.getMove(state.getCurrentPlayer())) {
                 State nextState = state.play(move);
+                complexity++;
                 m= Math.max(m,-negamax(nextState,depth-1));
             }
             return m;

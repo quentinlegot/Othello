@@ -16,6 +16,7 @@ public class AlphaBetaPlayer extends Player{
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
             State nextState = game.play(move);
+            complexity++;
             int value = -alphabeta(nextState, this.depth,Integer.MIN_VALUE,Integer.MAX_VALUE);
             if (value > bestValue) {
                 bestValue = value;

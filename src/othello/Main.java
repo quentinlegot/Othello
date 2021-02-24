@@ -13,10 +13,13 @@ public class Main {
 		State game = new State(board, p1, p2);
 		System.out.println("joueur 1: " + p1);
 		System.out.println("joueur 2: " + p2);
+		int tour = 0; // Pour le rapport
 		while(!game.isOver()) {
 			Player player = game.getCurrentPlayer();
 			System.out.println(game.toString());
 			game = game.play(player.play(game));
+			System.out.println("Tour "+tour+" ; complex : "+player.getComplexity());
+			tour++;
 		}
 		System.out.println(game.toString());
 		System.out.println(game.getN1()+"   "+ game.getN2());

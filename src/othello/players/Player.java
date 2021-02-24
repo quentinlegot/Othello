@@ -7,9 +7,15 @@ import othello.State;
 public abstract class Player {
 
 	protected final int depth;
+	protected int complexity;
 
 	public Player(int depth) {
 		this.depth = depth;
+		this.complexity = 0;
+	}
+	
+	public int getComplexity () {
+		return this.complexity;
 	}
 
 	public abstract Pair<Point, Point> play(State board);
