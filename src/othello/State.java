@@ -61,12 +61,17 @@ public class State {
 	public int getScore(Player player) {
 		return player == player1 ? (n1/(n1+n2)) : (n2/(n1+n2));
 	}
+	public int getN1(){
+		return this.n1;
+	}
+	public int getN2(){
+		return this.n2;
+	}
 
 	public Player getWinner() {
-		int scoreP1 = getScore(player1), scoreP2 = getScore(player2);
-		if(scoreP1 > scoreP2)
+		if(this.n1 > this.n2)
 			return player1;
-		else if(scoreP2 > scoreP1)
+		else if(this.n2 > this.n1)
 			return player2;
 		return null;
 	}
