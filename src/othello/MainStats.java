@@ -7,21 +7,34 @@ import java.io.UnsupportedEncodingException;
 import othello.players.AlphaBetaPlayer;
 import othello.players.Player;
 
-public class Main {
+public class MainStats {
 
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		Player p1 = new AlphaBetaPlayer(4);
-		Player p2 = new AlphaBetaPlayer(4);
+		Player p1 = new AlphaBetaPlayer(1);
+		Player p2 = new AlphaBetaPlayer(5);
 		Player[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
 		System.out.println("joueur 1: " + p1);
 		System.out.println("joueur 2: " + p2);
+		int tour = 1; // Pour le rapport
+		PrintWriter writer = new PrintWriter("statsj1.txt", "UTF-8");
+		PrintWriter writer2 = new PrintWriter("statsj2.txt", "UTF-8");
+		
 		while(!game.isOver()) {
 			Player player = game.getCurrentPlayer();
 			System.out.println(game.toString());
 			game = game.play(player.play(game));
+			if(tour%2 == 0) {
+				writer2.println(player.getComplexity());
+			}
+			else {
+				writer.println(player.getComplexity());
+			}
+			tour++;
 		}
+		writer.close();
+		writer2.close();
 		System.out.println(game.toString());
 		System.out.println(game.getN1()+"   "+ game.getN2());
 		System.out.println(game.getWinner() + " a gagné la partie");
