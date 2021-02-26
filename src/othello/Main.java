@@ -23,16 +23,26 @@ public class Main {
 			System.out.println(game.toString());
 			game = game.play(player.play(game));
 		}
-		endGame(game);
+		endGame(game, p1, p2);
 
 	}
 
+	/**
+	 * The method will interpret the arguments and return a {@link Player} instance depending on the arguments given
+	 * <ul><li>argument 0 {@code int}: player 1 depth search</li>
+	 * <li>argument 1 {@code int}: player 2 depth search</li>
+	 * <li>argument 2 {@code boolean}: true if player should be {@link AlphaBetaPlayer} instance,
+	 * {@link NegamaxPlayer} otherwise</li></ul>
+	 * If arguments are missing or invalid, default value will be use {@code (4, 4, true)}
+	 * @param args program arguments, given when user write the command to execute the program
+	 * @return Player 1 and 2 instance
+	 */
 	public static Player[] extractArgs(String[] args) {
 		Player p1;
 		Player p2;
 		int depthP1 = 4;
 		int depthP2 = 4;
-		boolean useAlphaBeta = false;
+		boolean useAlphaBeta = true;
 		try {
 			if(args.length >= 3) { // les paramètres > 3 sont ignorés
 				depthP1 = Integer.parseInt(args[0]);
@@ -63,12 +73,12 @@ public class Main {
 		return board;
 	}
 
-	public static void endGame(State game) {
+	public static void endGame(State game, Player p1, Player p2) {
 		System.out.println(game.toString());
 		System.out.println(game.getN1()+"   "+ game.getN2());
 		System.out.println(game.getWinner() + " a gagné la partie");
-		System.out.println("Score joueur 1 -> " + game.getN1());
-		System.out.println("Score joueur 2 -> "+ game.getN2());
+		System.out.println("Score joueur 1 -> " + game.getScore(p1));
+		System.out.println("Score joueur 2 -> "+ game.getScore(p2));
 	}
 
 }

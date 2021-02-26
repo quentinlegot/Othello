@@ -7,6 +7,11 @@ import java.util.List;
 
 public class State {
 
+	/**
+	 * Contains previous situations of the {@link State#board}, if the game return in a situation which have already
+	 * been played, the game ends.
+	 * We only keep the 10 previous situations due to performances issues
+	 */
 	public static List<Player[][]> previousSituations = new LinkedList<>();
 
 	private final Player[][] board;
@@ -26,9 +31,18 @@ public class State {
 	}
 	
 	public boolean isOver() {
-		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty()) || previousSituations.contains(this.board);
+		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty())
+				|| previousSituations.contains(this.board);
 	}
 
+	/**
+	 * The method check every possible movement which can do {@code player}'s pawns and add the movement in a list when
+	 * there is no-one on the {@link State#board board}. the left side of the {@link Pair tuple} contains the position
+	 * where the pawn currently is and the right side the position where it can go by cloning itself or jumping over an
+	 * other pawn
+	 * @param player the player whose possible movements will be checked
+	 * @return a {@link LinkedList list} containing every movement which can do {@code player} in this current situation
+	 */
 	public LinkedList<Pair<Point, Point>> getMove(Player player) {
 		// Pair<Depart, Arrivee>
 		LinkedList<Pair<Point, Point>> moves = new LinkedList<>();
@@ -78,6 +92,14 @@ public class State {
 		return null;
 	}
 
+	/**
+	 * The method create a copy of itself and modify this copy depending on the {@code move} parameter, it'll clone or jump
+	 * a pawn from the left side of {@code move} to the right side, switch current player and recalculate players' score
+	 * @param move a {@link Pair tuple} containing 2 elements,
+	 *                the left side contains the starting point (where is the point)
+	 *                and the right side contains the point where it'll clone or jump
+	 * @return a modified copy of the current situation
+	 */
 	public State play(Pair<Point,Point> move) {
 		if(previousSituations.size() == 10) // on ne garde que les 10 dernieres situations par soucis de perfs
 			previousSituations.remove(0);

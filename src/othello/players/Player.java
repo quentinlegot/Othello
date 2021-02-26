@@ -18,6 +18,11 @@ public abstract class Player {
 		return this.complexity;
 	}
 
+	/**
+	 * @param board current {@link State} situation
+	 * @return a {@link Pair tuple} with on the left side the starting point of a pawn and on the right side the arrival
+	 * point
+	 */
 	public abstract Pair<Point, Point> play(State board);
 
 	protected int evaluate(State game){

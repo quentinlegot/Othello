@@ -35,7 +35,7 @@ public class MainStats {
 		}
 		writer.close();
 		writer2.close();
-		Main.endGame(game);
+		Main.endGame(game, p1, p2);
 	}
 	
 }
