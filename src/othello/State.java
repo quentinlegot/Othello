@@ -7,7 +7,7 @@ import java.util.List;
 
 public class State {
 
-	public static List<State> previousSituations = new LinkedList<>();
+	public static List<Player[][]> previousSituations = new LinkedList<>();
 
 	private final Player[][] board;
 	private final Player player1;
@@ -26,7 +26,7 @@ public class State {
 	}
 	
 	public boolean isOver() {
-		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty());
+		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty()) || previousSituations.contains(this.board);
 	}
 
 	public LinkedList<Pair<Point, Point>> getMove(Player player) {
@@ -61,10 +61,12 @@ public class State {
 	public int getScore(Player player) {
 		return player == player1 ? (n1/(n1+n2)) : (n2/(n1+n2));
 	}
-	public int getN1(){
+
+	public int getN1() {
 		return this.n1;
 	}
-	public int getN2(){
+
+	public int getN2() {
 		return this.n2;
 	}
 
@@ -77,22 +79,24 @@ public class State {
 	}
 
 	public State play(Pair<Point,Point> move) {
+		if(previousSituations.size() == 10) // on ne garde que les 10 dernieres situations par soucis de perfs
+			previousSituations.remove(0);
+		previousSituations.add(board);
 		State copy = this.copy();
 		boolean isJump = move.getLeft().isJump(move.getRight(), copy.board);
 		copy.board[move.getRight().getY()][move.getRight().getX()] = copy.currentPlayer;
 		if (isJump) {
 			copy.board[move.getLeft().getY()][move.getLeft().getX()] = null;
-			copy.board[(move.getLeft().getY() + move.getRight().getY()) / 2][(move.getLeft().getX() + move.getRight().getX()) / 2] = copy.currentPlayer;
-		} else {
-			for (int i = -1; i < 2; i++) {
-				for (int z = -1; z < 2; z++) {
-					try {
-						if(copy.board[move.getRight().getY() + i][move.getRight().getX() + z] != null)
-							copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.currentPlayer;
-					} catch (IndexOutOfBoundsException ignored) {}
-				}
+		}
+		for (int i = -1; i < 2; i++) {
+			for (int z = -1; z < 2; z++) {
+				try {
+					if(copy.board[move.getRight().getY() + i][move.getRight().getX() + z] != null)
+						copy.board[move.getRight().getY() + i][move.getRight().getX() + z] = copy.currentPlayer;
+				} catch (IndexOutOfBoundsException ignored) {}
 			}
 		}
+
 
 		int ni = 0, nj = 0;
 		for (Player[] players : copy.board) {
@@ -133,10 +137,7 @@ public class State {
 	public void switchPlayer() {
 		setCurrentPlayer(getCurrentPlayer() == this.player1 ? player2 : player1);
 	}
-	
-	/**
-	 * TODO: display the current state of the board
-	 */
+
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -154,6 +155,7 @@ public class State {
 		}
 		return str.toString();
 	}
+
 	@Override
 	public boolean equals(Object state) {
 		boolean bool;
