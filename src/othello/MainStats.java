@@ -22,8 +22,8 @@ public class MainStats {
 		System.out.println("joueur 1: " + p1);
 		System.out.println("joueur 2: " + p2);
 		int tour = 1; // Pour le rapport
-		PrintWriter writer = new PrintWriter("statsj1.txt", StandardCharsets.UTF_8);
-		PrintWriter writer2 = new PrintWriter("statsj2.txt", StandardCharsets.UTF_8);
+		PrintWriter writer = new PrintWriter("statsj1.txt");
+		PrintWriter writer2 = new PrintWriter("statsj2.txt");
 
 		while(!game.isOver()) {
 			Player player = game.getCurrentPlayer();
