@@ -49,7 +49,7 @@ Nous avons utilisé un algorithme Negamax pour résoudre le problème, représen
 \newpage
 \subsection{Algorithme d'élagage}
 
-Afin d'améliorer les performances de notre algorithme de base, nous avons implémenté une version avec élagage Alpha-Beta, plus performante.
+Afin d'améliorer les performances de notre algorithme de base, nous avons implémenté une version avec élagage Alpha-Bêta, plus performante.
 
 \lstinputlisting[language=Java]{AlphaBetaPlayer.txt}
 
@@ -60,11 +60,11 @@ Afin d'améliorer les performances de notre algorithme de base, nous avons impl�
 
 Les graphiques qui vont suivre ont été conçus à l’aide des algorithmes AlphaBeta et Negamax.\\
 Ils sont l’objet de comparaisons entre les algorithmes, en fonction de leur type ou du joueur concerné (premier ou second joueur).\\
-Ils traduisent la complexité de l’algorithmes (le nombre de nœuds traversés) au fur et à mesure des tours de la partie.\\
+Ils traduisent la complexité de l’algorithme (le nombre de nœuds traversés) au fur et à mesure des tours de la partie.\\
 Le premier joueur est associé à la courbe rouge et le deuxième à la bleue.\\
 La profondeur de recherche des deux joueurs sera toujours la même.\\
 
-Tout les tests incluant un temps ont été fait sur la même machine et en même temps: Raspberry pi 3 avec un processeur Quad Core 1.2GHz 64bit sous Raspbian OS 32 bits sans Bureau.
+Tous les tests incluant un temps ont été fait sur la même machine et en même temps : Raspberry pi 3 avec un processeur Quad Core 1.2GHz 64bit sous Raspbian OS 32 bits sans Bureau.
 \newpage
 \subsection{AlphaBeta}
 
@@ -74,7 +74,7 @@ Tout les tests incluant un temps ont été fait sur la même machine et en même
    \includegraphics[width=\textwidth]{prof1alphabeta.png}
 \end{figure}
 
-Le joueur 1 obtient assez vite (tour 5) un avantage (il possède plus de possibilités) qui augmente au fur et à mesure des tours. A son maximum (fin de la partie) cet avantage est 69\% plus important par rapport au second joueur.\\
+Le joueur 1 obtient assez vite (tour 5) un avantage (il possède plus de possibilités) qui augmente au fur et à mesure des tours. À son maximum (fin de la partie) cet avantage est 69\% plus important par rapport au second joueur.\\
 L’augmentation de la complexité est plutôt linéaire.\\
 Il semblerait que jouer en premier est un avantage.
 \newpage
@@ -85,9 +85,9 @@ Il semblerait que jouer en premier est un avantage.
 \end{figure}
 
 Malgré qu’il soit second à jouer, joueur 2 obtient un avantage au niveau du tour 10 environ. Cet avantage augmente jusqu’au tour 30, avec un pic à 30\% par rapport au joueur 1, mais reste marginal. Il se réduit ensuite jusqu’à la fin de la partie.\\
-Le nombre de tour est largement inférieur par rapport au précédent graphique. La complexité du joueur 1 est deux fois moins importante que sur le graphique précédent, malgré la profondeur plus importante.\\
+Le nombre de tours est largement inférieur par rapport au précédent graphique. La complexité du joueur 1 est deux fois moins importante que sur le graphique précédent, malgré la profondeur plus importante.\\
 Mais malgré cet avantage, la victoire est pour le joueur 1.\\
-La courbe est linéaire, comme sur la graphique précédent.\\
+La courbe est linéaire, comme sur le graphique précédent.\\
 Être le premier à jouer semble donner un avantage, et le nombre de possibilités du joueur 2 plus important n’était pas suffisant pour le résorber. La profondeur ne semble pas forcément augmenter le nombre de possibilités.
 \newpage
 \subsubsection{Profondeur 3}
@@ -134,9 +134,9 @@ Pour 3 094 nœuds visités, l’algorithme dure 6 minutes et 54 secondes.
 \subsubsection{Conclusion d’Alphabeta}
 
 Jouer en premier donne un avantage. Il faut au second joueur un avantage conséquent (situé entre 30\% et 100\% par rapport au premier) pour lui permettre de l’emporter.\\
-De plus, c’est sur les profondeur pairs que le second joueur semble posséder un avantage.\\
-L’augmentation de la profondeur de l’algorithme AlphaBeta n’augmente pas forcément la complexité de ce dernier. Cependant l’augmentation de la complexité en fonction du nombre de tour est relativement linéaire.\\
-Le temps de résolution des algorithme pour des petites profondeurs (1, 2, 3) est de quelques secondes mais augmente drastiquement avec la profondeur, AlphaBeta(5) s’exécute pendant plusieurs minutes. 
+De plus, c’est sur les profondeurs paires que le second joueur semble posséder un avantage.\\
+L’augmentation de la profondeur de l’algorithme AlphaBeta n’augmente pas forcément la complexité de ce dernier. Cependant l’augmentation de la complexité en fonction du nombre de tours est relativement linéaire.\\
+Le temps de résolution des algorithmes pour des petites profondeurs (1, 2, 3) est de quelques secondes, mais augmente drastiquement avec la profondeur, AlphaBeta(5) s’exécute pendant plusieurs minutes. 
 
 \subsection{Negamax}
 
@@ -146,7 +146,7 @@ Le temps de résolution des algorithme pour des petites profondeurs (1, 2, 3) es
    \includegraphics[width=\textwidth]{prof1negamax.png}
 \end{figure}
 
-Aucun des joueurs n’a d’avantage particulier.\\
+Aucun des joueurs n’a davantage particulier.\\
 La complexité est environ 20 fois plus importante qu’AlphaBeta.\\
 Le joueur 1 est le gagnant. Avec cet algorithme aussi il semblerait que le premier joueur possède un avantage.\\
 L’augmentation de la complexité est moins importante au début et à la fin de partie mais est assez linéaire.
@@ -159,8 +159,8 @@ L’augmentation de la complexité est moins importante au début et à la fin d
 
 La complexité est 40 fois plus importante qu’avec la profondeur précédente.\\
 La forme de la courbe est similaire au graphique précédent.\\
-Aucun joueur n’a d’avantage majeur au cours de la partie. Le second joueur a un petit avantage qui commence au tour 15 et qui finit au tour 33 où le premier prend l’avantage, qui reste faible, jusqu’à la fin de la partie. \\
-Cependant c’est le second joueur qui l’emporte, alors qu’il n’avait pas un grand avantage. Cela différencie cet algorithme de AlphaBeta.
+Aucun joueur n’a davantage majeur au cours de la partie. Le second joueur a un petit avantage qui commence au tour 15 et qui finit au tour 33 où le premier prend l’avantage, qui reste faible, jusqu’à la fin de la partie. \\
+Cependant, c’est le second joueur qui l’emporte, alors qu’il n’avait pas un grand avantage. Cela différencie cet algorithme de AlphaBeta.
 
 \newpage
 \subsubsection{Profondeur 3}
@@ -170,7 +170,7 @@ Cependant c’est le second joueur qui l’emporte, alors qu’il n’avait pas 
 \end{figure}
 
 La complexité de cet algorithme est 15 fois supérieur au précédent.\\
-Le joueur 2 commence à avoir un avantage au tour 23, avantage qui augmente un peu jusqu’à la fin de la partie. Cependant cet avantage n’est pas suffisant et c’est le premier joueur qui gagne.\\
+Le joueur 2 commence à avoir un avantage au tour 23, avantage qui augmente un peu jusqu’à la fin de la partie. Cependant, cet avantage n’est pas suffisant et c’est le premier joueur qui gagne.\\
 La courbe est similaire à celles des autres profondeurs.
 
 \newpage
@@ -181,7 +181,7 @@ La courbe est similaire à celles des autres profondeurs.
 \end{figure}
 
 La complexité est environ 11 fois supérieur à Negamax de profondeur 3. Le premier joueur possède un avantage au tour 10 qui augmente jusqu’au tour 22 et se réduit ensuite jusqu’à la fin de la partie.\\
-Malgré cet avantage c’est le second joueur qui remporte la partie.
+Malgré cet avantage, c’est le second joueur qui remporte la partie.
 
 \begin{figure}[!h]
    \includegraphics[width=\textwidth]{prof4negamax-console.png}
@@ -192,17 +192,17 @@ Pour le parcours des 536 329 836 nœuds, l’algorithme met 69 minutes et 43 sec
 \subsubsection{Profondeur 5}
 
 Nous avons estimé la complexité de Negamax de profondeur 5 à au moins 8.2 milliards de nœuds.\\
-Nous avons essayer de le lancer mais après 28 heures d’exécution sur le Raspberry Pi celui-ci n’étais pas terminé, de plus la complexité stocké comme attribut de la classe Player est stocké sur un entier signé 32 bits dont la limite positive est $2^{31} - 1$ soit inférieur à 8 milliards.
+Nous avons essayé de le lancer, mais après 28 heures d’exécution sur le Raspberry Pi celui-ci n’était pas terminé, de plus la complexité stockée comme attribut de la classe Player est stocké sur un entier signé 32 bits dont la limite positive est $2^{31} - 1$ soit inférieur à 8 milliards.
 
 \subsubsection{Conclusion de Negamax}
 
 L’augmentation de la complexité en fonction de la profondeur de l’algorithme est exponentielle.\\
 La victoire d’un joueur n’a pas l’air influé par son avantage ou par son ordre de jeu.\\
-Cet algorithme est très long et du à sa complexité exponentielle, son temps d’exécution l’est également.
+Cet algorithme est très long et dû à sa complexité exponentielle, son temps d’exécution l’est également.
 
-\section{Difficultés rencontrés}
+\section{Difficultés rencontrées}
 
-Nous avons rencontrés quelques difficultés durant la réalisation du jeu, notamment du à des incompréhension des règles du jeu:\\
+Nous avons rencontré quelques difficultés durant la réalisation du jeu, notamment dues à des incompréhensions des règles du jeu :\\
 
 \begin{itemize}
     \item Lors du clonage toutes les cases même inoccupées étaient modifiées.
