@@ -72,8 +72,8 @@ public class State {
 		return moves;
 	}
 	
-	public int getScore(Player player) {
-		return player == player1 ? (n1/(n1+n2)) : (n2/(n1+n2));
+	public float getScore(Player player) {
+		return player == player1 ? ((float) n1/(n1+n2)) : ((float) n2/(n1+n2));
 	}
 
 	public int getN1() {
