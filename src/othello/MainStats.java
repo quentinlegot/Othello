@@ -5,14 +5,15 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import othello.players.AlphaBetaPlayer;
+import othello.players.NegamaxPlayer;
 import othello.players.Player;
 
 public class MainStats {
 
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		Player p1 = new AlphaBetaPlayer(1);
-		Player p2 = new AlphaBetaPlayer(5);
+		Player p1 = new NegamaxPlayer(2);
+		Player p2 = new NegamaxPlayer(2);
 		Player[][] board = initialize(p1, p2);
 		State game = new State(board, p1, p2);
 		System.out.println("joueur 1: " + p1);
