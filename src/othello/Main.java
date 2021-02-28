@@ -19,6 +19,7 @@ public class Main {
 		System.out.println("joueur 1: " + p1);
 		System.out.println("joueur 2: " + p2);
 		while(!game.isOver()) {
+			State.previousSituations.add(game.toString());
 			Player player = game.getCurrentPlayer();
 			System.out.println(game.toString());
 			game = game.play(player.play(game));

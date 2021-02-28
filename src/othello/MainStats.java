@@ -26,6 +26,7 @@ public class MainStats {
 		PrintWriter writer2 = new PrintWriter("statsj2.txt");
 
 		while(!game.isOver()) {
+			State.previousSituations.add(game.toString());
 			Player player = game.getCurrentPlayer();
 			System.out.println(game.toString());
 			game = game.play(player.play(game));

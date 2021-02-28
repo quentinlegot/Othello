@@ -12,7 +12,7 @@ public class State {
 	 * been played, the game ends.
 	 * We only keep the 10 previous situations due to performances issues
 	 */
-	public static List<Player[][]> previousSituations = new LinkedList<>();
+	public static List<String> previousSituations = new LinkedList<>();
 
 	private final Player[][] board;
 	private final Player player1;
@@ -32,7 +32,7 @@ public class State {
 	
 	public boolean isOver() {
 		return n1 == 0 || n2 == 0 || (getMove(player1).isEmpty() && getMove(player2).isEmpty())
-				|| previousSituations.contains(this.board);
+				|| previousSituations.contains(toString());
 	}
 
 	/**
@@ -101,9 +101,8 @@ public class State {
 	 * @return a modified copy of the current situation
 	 */
 	public State play(Pair<Point,Point> move) {
-		if(previousSituations.size() == 10) // on ne garde que les 10 dernieres situations par soucis de perfs
+		if(previousSituations.size() == 15) // on ne garde que les 10 dernieres situations par soucis de perfs
 			previousSituations.remove(0);
-		previousSituations.add(board);
 		State copy = this.copy();
 		boolean isJump = move.getLeft().isJump(move.getRight(), copy.board);
 		copy.board[move.getRight().getY()][move.getRight().getX()] = copy.currentPlayer;
