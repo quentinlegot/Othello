@@ -10,6 +10,13 @@ public class NegamaxPlayer extends Player {
         super(depth);
     }
 
+    /**
+     * This method will find the best move to try to win the game by searching all possible movement given by
+     * {@link State#getMove(Player)} in the limit of {@link Player#depth}
+     * @see NegamaxPlayer#negamax(State, int)
+     * @see AlphaBetaPlayer#play(State)
+     * @see Player#play(State)
+     */
     @Override
     public Pair<Point, Point> play(State game) {
         int bestValue = Integer.MIN_VALUE;

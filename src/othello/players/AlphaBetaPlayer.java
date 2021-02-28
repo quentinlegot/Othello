@@ -10,6 +10,13 @@ public class AlphaBetaPlayer extends Player{
         super(depth);
     }
 
+    /**
+     * This method will find the best move to try to win the game by searching all possible movement given by
+     * {@link State#getMove(Player)} in the limit of {@link Player#depth}
+     * @see AlphaBetaPlayer#alphabeta(State, int, int, int)
+     * @see Player#play(State)
+     * @see NegamaxPlayer#play(State)
+     */
     @Override
     public Pair<Point, Point> play(State game) {
         int bestValue = Integer.MIN_VALUE;
