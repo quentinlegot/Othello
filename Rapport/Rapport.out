@@ -1,0 +1,24 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Organisation du code}{}% 2
+\BOOKMARK [1][-]{section.3}{L'algorithme de recherche}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Algorithme de base}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Algorithme d'\351lagage}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Mesures}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Pr\351sentation}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{AlphaBeta}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Profondeur 1}{subsection.4.2}% 9
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Profondeur 2}{subsection.4.2}% 10
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Profondeur 3}{subsection.4.2}% 11
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Profondeur 4}{subsection.4.2}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.5}{Profondeur 5}{subsection.4.2}% 13
+\BOOKMARK [3][-]{subsubsection.4.2.6}{Conclusion d\220Alphabeta}{subsection.4.2}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Negamax}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Profondeur 1}{subsection.4.3}% 16
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Profondeur 2}{subsection.4.3}% 17
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Profondeur 3}{subsection.4.3}% 18
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Profondeur 4}{subsection.4.3}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Profondeur 5}{subsection.4.3}% 20
+\BOOKMARK [3][-]{subsubsection.4.3.6}{Conclusion de Negamax}{subsection.4.3}% 21
+\BOOKMARK [1][-]{section.5}{Difficult\351s rencontr\351s}{}% 22
+\BOOKMARK [1][-]{section.6}{Exp\351rimentations}{}% 23
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 24

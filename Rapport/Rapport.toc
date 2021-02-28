@@ -1,0 +1,25 @@
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Organisation du code}{2}{section.2}%
+\contentsline {section}{\numberline {3}L'algorithme de recherche}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Algorithme de base}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Algorithme d'élagage}{4}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Mesures}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Présentation}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}AlphaBeta}{6}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Profondeur 1}{6}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Profondeur 2}{7}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Profondeur 3}{8}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Profondeur 4}{9}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}Profondeur 5}{10}{subsubsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.6}Conclusion d’Alphabeta}{11}{subsubsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.3}Negamax}{11}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Profondeur 1}{11}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Profondeur 2}{12}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Profondeur 3}{13}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Profondeur 4}{14}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}Profondeur 5}{15}{subsubsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.6}Conclusion de Negamax}{15}{subsubsection.4.3.6}%
+\contentsline {section}{\numberline {5}Difficultés rencontrés}{15}{section.5}%
+\contentsline {section}{\numberline {6}Expérimentations}{15}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{16}{section.7}%

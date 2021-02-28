@@ -30,17 +30,30 @@
 Le but de notre projet était de concevoir un algorithme de recherche performant sur un jeu d' \textit{Othello}. Le jeu est le plus abstrait possible, la partie nous intéressant étant la réalisation d'un algorithme de recherche efficace. Il est ainsi impossible de jouer au jeu, on ne peut que regarder le résultat d'une partie entre deux joueurs artificiels.\\
 Une fois le jeu et l'algorithme de recherche implémentés, nous serons en mesure d'analyser ce dernier pour définir ses paramètres de fonctionnement optimaux. Nous aborderons dans un premier temps l'implémentation du jeu, puis celle de l'algorithme et enfin la présentation et l'analyse des mesures observées.
 
+
+\section{Organisation du code}
+Notre code se compose de plusieurs classes dont nous allons détailler les rôles ci-dessous. 
+\begin{itemize}
+\item La classe STATE: \\ Cette classe représente un état du jeu à un moment donné avec différents paramètres comme le nombre de pions de chaque joueur et leur position sur un plateau de jeu. Elle possède plusieurs méthodes lui permettant de créer une copie d'elle-même, de s'afficher, de trouver les coups possibles pour un joueur ou encore de jouer un coup.
+\item La classe PAIR: \\ Cette classe nous a permis de représenter les coups possibles par une paire pion de départ, pion d'arrivée.
+\item Les classes PLAYER: \\ Elles permettent de simuler un joueur, il en existe 4, la classe mère PLAYER et les classes filles NEGAMAXPLAYER, RANDOMPLAYER et ALPHABETAPLAYER. La classe RANDOMPLAYER renvoie un coup au hasard parmi les coups possibles. Pour le fonctionnement des deux autres classes, il est détaillé dans les pages qui suivent.
+\item La classe POINT: \\ Elle nous permet simplement de représenter un point du plateau de jeu avec une coordonnée X et une coordonnée Y.
+\end{itemize}
 \section{L'algorithme de recherche}
 \subsection{Algorithme de base}
 
-Nous avons utilisé un algorithme Negamax pour résoudre le problème.
+Nous avons utilisé un algorithme Negamax pour résoudre le problème, représenté en pseudo-code ci-dessous.
 
 \lstinputlisting[language=Java]{NegamaxPlayer.java}
 
+\newpage
 \subsection{Algorithme d'élagage}
+
+Afin d'améliorer les performances de notre algorithme de base, nous avons implémenté une version avec élagage Alpha-Beta, plus performante.
 
 \lstinputlisting[language=Java]{AlphaBetaPlayer.java}
 
+\newpage
 \section{Mesures}
 
 \subsection{Présentation}
@@ -174,7 +187,7 @@ Malgré cet avantage c’est le second joueur qui remporte la partie.
    \includegraphics[width=\textwidth]{prof4negamax-console.png}
 \end{figure}
 
-Pour le parcours des 536 329 836 nœuds, l’algorithme met 69 minutes et 43 secondes. 
+Pour le parcours des 536 329 836 nœuds, l’algorithme met 69 minutes et 43 secondes. 
 
 \subsubsection{Profondeur 5}
 
