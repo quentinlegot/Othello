@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.8)  28 FEB 2021 19:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.8)  28 FEB 2021 23:13
 entering extended mode
 **./Rapport.tex
 (Rapport.tex
@@ -451,137 +451,159 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--53
  []
 
 [4]
-<prof1alphabeta.png, id=229, 903.375pt x 558.58687pt>
+<alphabeta.png, id=229, 903.375pt x 558.58687pt>
+File: alphabeta.png Graphic file (type png)
+<use alphabeta.png>
+Package pdftex.def Info: alphabeta.png  used on input line 58.
+(pdftex.def)             Requested size: 390.0pt x 241.1508pt.
+<negamax.png, id=231, 903.375pt x 558.58687pt>
+File: negamax.png Graphic file (type png)
+<use negamax.png>
+Package pdftex.def Info: negamax.png  used on input line 62.
+(pdftex.def)             Requested size: 390.0pt x 241.1508pt.
+<prof1alphabeta.png, id=232, 903.375pt x 558.58687pt>
 File: prof1alphabeta.png Graphic file (type png)
 <use prof1alphabeta.png>
-Package pdftex.def Info: prof1alphabeta.png  used on input line 61.
+Package pdftex.def Info: prof1alphabeta.png  used on input line 70.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
- [5 <./prof1alphabeta.png>]
-<prof2alphabeta.png, id=236, 903.375pt x 558.58687pt>
+ [5 <./alphabeta.png> <./negamax.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 73--75
+
+ []
+
+[6 <./prof1alphabeta.png>]
+<prof2alphabeta.png, id=245, 903.375pt x 558.58687pt>
 File: prof2alphabeta.png Graphic file (type png)
 <use prof2alphabeta.png>
-Package pdftex.def Info: prof2alphabeta.png  used on input line 71.
+Package pdftex.def Info: prof2alphabeta.png  used on input line 82.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--77
+Underfull \hbox (badness 10000) in paragraph at lines 85--88
 
  []
 
-[6 <./prof2alphabeta.png>]
-<prof3alphabeta.png, id=243, 903.375pt x 558.58687pt>
+[7 <./prof2alphabeta.png>]
+<prof3alphabeta.png, id=251, 903.375pt x 558.58687pt>
 File: prof3alphabeta.png Graphic file (type png)
 <use prof3alphabeta.png>
-Package pdftex.def Info: prof3alphabeta.png  used on input line 84.
-(pdftex.def)             Requested size: 390.0pt x 241.1508pt.
- [7 <./prof3alphabeta.png>]
-<prof4alphabeta.png, id=249, 903.375pt x 558.58687pt>
-File: prof4alphabeta.png Graphic file (type png)
-<use prof4alphabeta.png>
-Package pdftex.def Info: prof4alphabeta.png  used on input line 97.
+Package pdftex.def Info: prof3alphabeta.png  used on input line 95.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
-<prof4alphabeta-console.png, id=250, 495.8525pt x 136.51pt>
-File: prof4alphabeta-console.png Graphic file (type png)
-<use prof4alphabeta-console.png>
-Package pdftex.def Info: prof4alphabeta-console.png  used on input line 107.
-(pdftex.def)             Requested size: 390.0pt x 107.36887pt.
-[8 <./prof4alphabeta.png> <./prof4alphabeta-console.png>]
-<prof5alphabeta.png, id=257, 903.375pt x 558.58687pt>
-File: prof5alphabeta.png Graphic file (type png)
-<use prof5alphabeta.png>
-Package pdftex.def Info: prof5alphabeta.png  used on input line 115.
+[8 <./prof3alphabeta.png>]
+<prof4alphabeta.png, id=257, 903.375pt x 558.58687pt>
+File: prof4alphabeta.png Graphic file (type png)
+<use prof4alphabeta.png>
+Package pdftex.def Info: prof4alphabeta.png  used on input line 108.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
 
-Overfull \hbox (2.61531pt too wide) in paragraph at lines 122--123
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
+
+ []
+
+[9 <./prof4alphabeta.png>]
+<prof4alphabeta-console.png, id=263, 592.2125pt x 277.035pt>
+File: prof4alphabeta-console.png Graphic file (type png)
+<use prof4alphabeta-console.png>
+Package pdftex.def Info: prof4alphabeta-console.png  used on input line 118.
+(pdftex.def)             Requested size: 390.0pt x 182.4463pt.
+ [10 <./prof4alphabeta-console.png>]
+<prof5alphabeta.png, id=269, 903.375pt x 558.58687pt>
+File: prof5alphabeta.png Graphic file (type png)
+<use prof5alphabeta.png>
+Package pdftex.def Info: prof5alphabeta.png  used on input line 127.
+(pdftex.def)             Requested size: 390.0pt x 241.1508pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--133
+
+ []
+
+
+Overfull \hbox (2.61531pt too wide) in paragraph at lines 134--136
 []\T1/cmr/m/n/12 Identique au pré-cé-dent gra-phique, la courbe est plu-tôt li-
 néaire et le nombre
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
-
- []
-
-[9 <./prof5alphabeta.png>]
-<prof5alphabeta-console.png, id=263, 496.85625pt x 134.5025pt>
+[11 <./prof5alphabeta.png>]
+<prof5alphabeta-console.png, id=275, 581.17125pt x 279.0425pt>
 File: prof5alphabeta-console.png Graphic file (type png)
 <use prof5alphabeta-console.png>
-Package pdftex.def Info: prof5alphabeta-console.png  used on input line 127.
-(pdftex.def)             Requested size: 390.0pt x 105.57646pt.
+Package pdftex.def Info: prof5alphabeta-console.png  used on input line 138.
+(pdftex.def)             Requested size: 390.0pt x 187.25554pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
+Underfull \hbox (badness 10000) in paragraph at lines 145--149
 
  []
 
-[10 <./prof5alphabeta-console.png>]
-<prof1negamax.png, id=269, 1204.5pt x 744.7825pt>
+[12 <./prof5alphabeta-console.png>]
+<prof1negamax.png, id=282, 903.375pt x 558.58687pt>
 File: prof1negamax.png Graphic file (type png)
 <use prof1negamax.png>
-Package pdftex.def Info: prof1negamax.png  used on input line 147.
-(pdftex.def)             Requested size: 390.0pt x 241.15366pt.
- [11 <./prof1negamax.png>]
-<prof2negamax.png, id=275, 903.375pt x 558.58687pt>
+Package pdftex.def Info: prof1negamax.png  used on input line 159.
+(pdftex.def)             Requested size: 390.0pt x 241.1508pt.
+ [13 <./prof1negamax.png>]
+<prof2negamax.png, id=288, 903.375pt x 558.58687pt>
 File: prof2negamax.png Graphic file (type png)
 <use prof2negamax.png>
-Package pdftex.def Info: prof2negamax.png  used on input line 159.
+Package pdftex.def Info: prof2negamax.png  used on input line 171.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
- [12 <./prof2negamax.png>]
-<prof3negamax.png, id=282, 903.375pt x 558.58687pt>
+ [14 <./prof2negamax.png>]
+<prof3negamax.png, id=294, 903.375pt x 558.58687pt>
 File: prof3negamax.png Graphic file (type png)
 <use prof3negamax.png>
-Package pdftex.def Info: prof3negamax.png  used on input line 173.
+Package pdftex.def Info: prof3negamax.png  used on input line 185.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+Underfull \hbox (badness 10000) in paragraph at lines 188--190
 
  []
 
-[13 <./prof3negamax.png>]
-<prof4negamax.png, id=288, 1204.5pt x 744.7825pt>
+[15 <./prof3negamax.png>]
+<prof4negamax.png, id=300, 1204.5pt x 744.7825pt>
 File: prof4negamax.png Graphic file (type png)
 <use prof4negamax.png>
-Package pdftex.def Info: prof4negamax.png  used on input line 186.
+Package pdftex.def Info: prof4negamax.png  used on input line 198.
 (pdftex.def)             Requested size: 390.0pt x 241.15366pt.
-<prof4negamax-console.png, id=289, 354.57469pt x 110.66344pt>
+ [16 <./prof4negamax.png>]
+<prof4negamax-console.png, id=306, 508.90125pt x 264.99pt>
 File: prof4negamax-console.png Graphic file (type png)
 <use prof4negamax-console.png>
-Package pdftex.def Info: prof4negamax-console.png  used on input line 193.
-(pdftex.def)             Requested size: 390.0pt x 121.72337pt.
- [14 <./prof4negamax.png> <./prof4negamax-console.png>] [15]
-<prof2alphaVSnegamax.png, id=303, 903.375pt x 558.58687pt>
+Package pdftex.def Info: prof4negamax-console.png  used on input line 205.
+(pdftex.def)             Requested size: 390.0pt x 203.08464pt.
+ [17 <./prof4negamax-console.png>] [18]
+<prof2alphaVSnegamax.png, id=320, 903.375pt x 558.58687pt>
 File: prof2alphaVSnegamax.png Graphic file (type png)
 <use prof2alphaVSnegamax.png>
-Package pdftex.def Info: prof2alphaVSnegamax.png  used on input line 216.
+Package pdftex.def Info: prof2alphaVSnegamax.png  used on input line 228.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
- [16 <./prof2alphaVSnegamax.png>]
-<prof2negamaxVSalpha.png, id=309, 903.375pt x 558.58687pt>
+ [19 <./prof2alphaVSnegamax.png>]
+<prof2negamaxVSalpha.png, id=326, 903.375pt x 558.58687pt>
 File: prof2negamaxVSalpha.png Graphic file (type png)
 <use prof2negamaxVSalpha.png>
-Package pdftex.def Info: prof2negamaxVSalpha.png  used on input line 226.
+Package pdftex.def Info: prof2negamaxVSalpha.png  used on input line 238.
 (pdftex.def)             Requested size: 390.0pt x 241.1508pt.
- [17 <./prof2negamaxVSalpha.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+ [20 <./prof2negamaxVSalpha.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
-[18] (Rapport.aux)
+[21] (Rapport.aux)
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
 (rerunfilecheck)             Checksum: EDFE9D99E5E23084C392C6E02A66C3BB;1908.
  ) 
 Here is how much of TeX's memory you used:
- 9972 strings out of 479618
- 152388 string characters out of 2865027
+ 9987 strings out of 479618
+ 152591 string characters out of 2865027
  703366 words of memory out of 3000000
- 26882 multiletter control sequences out of 15000+200000
+ 26892 multiletter control sequences out of 15000+200000
  414266 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,6n,74p,396b,1916s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -599,9 +621,9 @@ l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/anton/AppData
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
 s/anton/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 >
-Output written on Rapport.pdf (19 pages, 705094 bytes).
+Output written on Rapport.pdf (22 pages, 775955 bytes).
 PDF statistics:
- 632 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
- 287 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 650 PDF objects out of 1000 (max. 8388607)
+ 109 named destinations out of 1000 (max. 500000)
+ 297 words of extra memory for PDF output out of 10000 (max. 10000000)
 
