@@ -100,7 +100,7 @@ Jouer en premier n'est pas obligatoirement avantageux.
 Le premier joueur possède un petit avantage à partir du tour 10 environ. Mais au tour 18 cet avantage se réduit, pour réaugmenter au tour 23 jusqu'à la fin de partie. Il atteint au maximum 28\% par rapport au joueur 2.\\
 C'est le premier joueur qui remporte la partie.\\
 
-Comme précédemment la courbe est plutôt linéaire. Le nombre de tour est similaire à l'algorithme de profondeur inférieur.\\
+Comme précédemment, la courbe est plutôt linéaire. Le nombre de tour est similaire à l'algorithme de profondeur inférieur.\\
 Sans avantage, le joueur 2 ne semble pas pouvoir renverser la tendance et doit s'incliner.
 
 \begin{figure}[!h]
@@ -122,7 +122,7 @@ Malgré l'avantage du joueur 2 à le fin, c'est le joueur 1 qui l'emporte.
 Identique au précédent graphique, la courbe est plutôt linéaire et le nombre de tour n'augmente pas.\\
 
 L'avantage du second joueur sur la fin de la partie ne semble pas suffisant pour l'emporter.
-
+\newpage
 \begin{figure}[!h]
    \includegraphics[width=\textwidth]{prof5alphabeta-console.png}
 \end{figure}
@@ -138,6 +138,7 @@ Il semblerait que le nombre de possibilité n'influe pas sur la victoire avec ce
 L’augmentation de la profondeur de l’algorithme AlphaBeta n’augmente pas forcément la complexité de ce dernier. Cependant l’augmentation de la complexité en fonction du nombre de tour est relativement linéaire.\\
 Le temps de résolution des algorithme pour des petites profondeurs (1, 2, 3) est de quelques secondes mais augmente drastiquement avec la profondeur, AlphaBeta de profondeur 5 s’exécute durant plusieurs minutes. 
 
+\newpage
 \subsection{Negamax}
 
 \subsubsection{Profondeur 1}
@@ -151,6 +152,7 @@ La complexité est environ 20 fois plus importante qu’AlphaBeta.\\
 Le joueur 1 est le gagnant. Avec cet algorithme aussi il semblerait que le premier joueur possède un avantage.\\
 L’augmentation de la complexité est moins importante au début et à la fin de partie mais est assez linéaire.
 
+\newpage
 \subsubsection{Profondeur 2}
 
 \begin{figure}[!h]
@@ -205,6 +207,7 @@ La victoire d’un joueur n’a pas l’air influé par son avantage ou par son 
 Du à sa complexité exponentielle, le temps d’exécution de cet algorithme l’est également.
 Cependant le nombre de tour de jeu n'a pas l'air influé par la complexité de Negamax.
 
+\newpage
 \subsection{Negamax vs AlphaBeta}
 
 \subsubsection{Profondeur 2, AlphaBeta premier joueur, Negamax second}
@@ -216,6 +219,7 @@ Cependant le nombre de tour de jeu n'a pas l'air influé par la complexité de N
 Dès le premier tour, le joueur 2 avec l'algorithme Negamax, possède un très grand avantage qui augmente fortement par rapport au premier joueur.\\
 Avec cette avantage il gagne la partie, malgré qu'il soit second à jouer.
 
+\newpage
 \subsubsection{Profondeur 2, Negamax premier joueur, AlphaBeta second}
 
 \begin{figure}[!h]
@@ -229,6 +233,7 @@ Identiquement au graphique précédent, le premier joueur utilisant l'algorithme
 L'algorithme Negamax parcours beaucoup plus de noeuds, il prend rapidement un très gros avantage.
 Cet algorithme est plus efficace de AlphaBeta, mais il est plus long à exécuter.
 
+\newpage
 \section{Difficultés rencontrés}
 
 Nous avons rencontrés quelques difficultés durant la réalisation du jeu, notamment du à des incompréhension des règles du jeu:\\
