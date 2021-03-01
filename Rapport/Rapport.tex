@@ -29,6 +29,7 @@
 
 Le but de notre projet était de concevoir un algorithme de recherche performant sur un jeu d' \textit{Othello}. Le jeu est le plus abstrait possible, la partie nous intéressant étant la réalisation d'un algorithme de recherche efficace. Il est ainsi impossible de jouer au jeu, on ne peut que regarder le résultat d'une partie entre deux joueurs artificiels.\\
 Une fois le jeu et l'algorithme de recherche implémentés, nous serons en mesure d'analyser ce dernier pour définir ses paramètres de fonctionnement optimaux. Nous aborderons dans un premier temps l'implémentation du jeu, puis celle de l'algorithme et enfin la présentation et l'analyse des mesures observées.
+\newpage
 
 \section{L'algorithme de recherche}
 \subsection{Algorithme de base}
@@ -36,22 +37,23 @@ Une fois le jeu et l'algorithme de recherche implémentés, nous serons en mesur
 Nous avons utilisé un algorithme Negamax pour résoudre le problème.
 
 \lstinputlisting[language=Java]{NegamaxPlayer.txt}
+\newpage
 
 \subsection{Algorithme d'élagage}
 
 \lstinputlisting[language=Java]{AlphaBetaPlayer.txt}
-
+\newpage
 \section{Mesures}
 
 \subsection{Présentation}
 
 Les graphiques qui vont suivre ont été conçus à l’aide des algorithmes AlphaBeta et Negamax.\\
 Ils sont l’objet de comparaisons entre les algorithmes, en fonction de leur type ou du joueur concerné (premier ou second joueur).\\
-Ils traduisent la complexité de l’algorithmes (le nombre de nœuds traversés) au fur et à mesure des tours de la partie.\\
+Ils traduisent la complexité de l’algorithme (le nombre de nœuds traversés) au fur et à mesure des tours de la partie.\\
 Le premier joueur est associé à la courbe rouge et le deuxième à la bleue.\\
 La profondeur de recherche des deux joueurs sera toujours la même.\\
 
-Tout les tests incluant un temps ont été fait sur la même machine et en même temps: Raspberry pi 3 avec un processeur Quad Core 1.2GHz 64bit sous Raspbian OS 32 bits sans Bureau.
+Tous les tests incluant un temps ont été fait sur la même machine et en même temps : Raspberry pi 3 avec un processeur Quad Core 1.2GHz 64bit sous Raspbian OS 32 bits sans Bureau.
 \newpage
 
 \begin{figure}[!h]
@@ -70,7 +72,7 @@ Tout les tests incluant un temps ont été fait sur la même machine et en même
    \includegraphics[width=\textwidth]{prof1alphabeta.png}
 \end{figure}
 
-Le joueur 1 obtient assez vite (tour 5) un avantage (il possède plus de possibilités) qui augmente au fur et à mesure des tours. A son maximum (tour 20) cet avantage est 47\% plus important par rapport au second joueur.\\
+Le joueur 1 obtient assez vite (tour 5) un avantage (il possède plus de possibilités) qui augmente au fur et à mesure des tours. À son maximum (tour 20) cet avantage est 47\% plus important par rapport au second joueur.\\
 Cependant, c'est le second joueur qui gagne la partie.\\
 
 L’augmentation de la complexité est plutôt linéaire.\\
@@ -87,7 +89,7 @@ Le nombre de tours est largement inférieur par rapport au précédent graphique
 Mais malgré cet avantage, la victoire est pour le joueur 1.\\
 
 La courbe est linéaire, comme sur le graphique précédent.\\
-Être le premier à jouer semble donner un avantage, et le nombre de possibilités du joueur 2 plus important n’est pas suffisant pour le résorber. La profondeur ne semble pas forcément augmenter le nombre de possibilités.
+Être le premier à jouer semble donner un avantage et le nombre de possibilités du joueur 2 plus important n’est pas suffisant pour le résorber. La profondeur ne semble pas forcément augmenter le nombre de possibilités.
 \newpage
 \subsubsection{Profondeur 3}
 
@@ -113,10 +115,6 @@ C'est le premier joueur qui remporte la partie.\\
 
 Comme précédemment, la courbe est plutôt linéaire. Le nombre de tours est similaire à l'algorithme de profondeur inférieur.\\
 Sans avantage, le joueur 2 ne semble pas pouvoir renverser la tendance et doit s'incliner.
-\newpage
-\begin{figure}[!h]
-   \includegraphics[width=\textwidth]{prof4alphabeta-console.png}
-\end{figure}
 
 Le temps de résolution de cet algorithme est de 1 minute et 38 secondes pour un total de 1 661 nœuds visités (pour les deux joueurs).
 
@@ -128,18 +126,14 @@ Le temps de résolution de cet algorithme est de 1 minute et 38 secondes pour un
 \end{figure}
 
 Au tour 5 environ, le premier joueur obtient un léger avantage qui se résorbe au tour 22.\\
-Ensuite, c'est le second joueur qui gagne un petit avantage qui se maintient jusqu'à la fin de la partie .\\
+Ensuite, c'est le second joueur qui gagne un petit avantage qui se maintient jusqu'à la fin de la partie.\\
 Malgré l'avantage du joueur 2 à la fin, c'est le joueur 1 qui l'emporte.\\
 
 Identique au précédent graphique, la courbe est plutôt linéaire et le nombre de tours n'augmente pas.\\
 L'avantage du second joueur sur la fin de la partie ne semble pas suffisant pour l'emporter.
-\newpage
-\begin{figure}[!h]
-   \includegraphics[width=\textwidth]{prof5alphabeta-console.png}
-\end{figure}
 
 Pour 1 702 nœuds visités, l’algorithme dure 7 minutes et 47 secondes. 
-
+\newpage
 \subsubsection{Conclusion d’Alphabeta}
 
 L'ordre n'est pas un avantage.
@@ -147,7 +141,7 @@ Le second joueur surpasse des fois le premier joueur, alors qu'il n'a pas de ré
 De plus, le second joueur possède un avantage de 79\% au maximum par rapport au premier joueur avec l'algorithme Alphabeta de profondeur 2. Et malgré cet avantage, c'est le joueur 1 qui remporte la partie.
 Il semblerait que le nombre de possibilités n'influe pas sur la victoire avec cet algorithme, malgré ce qu'on pourrait logiquement penser.\\
 
-L’augmentation de la profondeur de l’algorithme AlphaBeta n’augmente pas forcément la complexité de ce dernier. Cependant, l’augmentation de la complexité en fonction du nombre de tour est relativement linéaire.\\
+L’augmentation de la profondeur de l’algorithme AlphaBeta n’augmente pas forcément la complexité de ce dernier. Cependant, l’augmentation de la complexité en fonction du nombre de tours est relativement linéaire.\\
 Le temps de résolution des algorithmes pour des petites profondeurs (1, 2, 3) est de quelques secondes, mais augmente drastiquement avec la profondeur, AlphaBeta de profondeur 5 s’exécute durant plusieurs minutes. 
 
 \newpage
@@ -159,7 +153,7 @@ Le temps de résolution des algorithmes pour des petites profondeurs (1, 2, 3) e
    \includegraphics[width=\textwidth]{prof1negamax.png}
 \end{figure}
 
-Aucun des joueurs n’a d’avantage particulier.\\
+Aucun des joueurs n’a davantage particulier.\\
 La complexité est environ 30 fois plus importante qu’AlphaBeta.\\
 Le joueur 2 est le gagnant. Avec cet algorithme, aussi, il semblerait que l'ordre ne soit pas un avantage.\\
 L’augmentation de la complexité est moins importante au début et à la fin de partie, mais est assez linéaire.
@@ -173,7 +167,7 @@ L’augmentation de la complexité est moins importante au début et à la fin d
 
 La complexité est 20 fois plus importante qu’avec la profondeur précédente.\\
 La forme de la courbe est similaire au graphique précédent.\\
-Aucun joueur n’a d’avantage majeur au cours de la partie. Le second joueur a un avantage qui commence au tour 19 jusqu'à ka fin de la partie. Cet avantage atteint au maximum 37\% par rapport au joueur 1. \\
+Aucun joueur n’a davantage majeur au cours de la partie. Le second joueur a un avantage qui commence au tour 19 jusqu'à la fin de la partie. Cet avantage atteint au maximum 37\% par rapport au joueur 1. \\
 Cependant, c’est le premier joueur qui l’emporte, alors qu’il n’avait pas un grand avantage.
 
 La complexité est bien plus importante qu'avec le précédent algorithme, mais le nombre de tours est plus petit.
@@ -200,18 +194,15 @@ La complexité est bien plus grande qu'avec le précédent graphique, mais le no
 
 La complexité est environ 10 fois supérieur à Negamax de profondeur 3. Le premier joueur possède un avantage au tour 10 qui augmente jusqu’au tour 22 et se réduit ensuite jusqu’à la fin de la partie.\\
 Malgré cet avantage, c’est le second joueur qui remporte la partie.
-\newpage
-\begin{figure}[!h]
-   \includegraphics[width=\textwidth]{prof4negamax-console.png}
-\end{figure}
+
 
 Pour le parcours des 536 329 836 nœuds, l’algorithme met 70 minutes et 57 secondes. 
-
+\newpage
 \subsubsection{Profondeur 5}
 
 Nous avons estimé la complexité de Negamax de profondeur 5 à au moins 8.2 milliards de nœuds.\\
-Nous avons é de le lancer, mais après 28 heures d’exécution sur le Raspberry Pi celui-ci n’étais pas terminé, de plus la complexité stockée comme attribut de la classe Player est stocké sur un entier signé 32 bits dont la limite positive est $2^{31} - 1$ soit inférieur à 8 milliards.
-\newpage
+Nous avons décidé de le lancer, mais après 28 heures d’exécution sur le Raspberry Pi celui-ci n’étais pas terminé, de plus la complexité stockée comme attribut de la classe Player est stocké sur un entier signé 32 bits dont la limite positive est $2^{31} - 1$ soit inférieur à 8 milliards.
+
 \subsubsection{Conclusion de Negamax}
 
 L’augmentation de la complexité en fonction de la profondeur de l’algorithme est exponentielle.\\
@@ -242,13 +233,13 @@ Identiquement au graphique précédent, le premier joueur utilisant l'algorithme
 
 \subsubsection{Conclusion de AlphaBeta vs Negamax}
 
-L'algorithme Negamax parcours beaucoup plus de noeud, il prend rapidement un très gros avantage.
+L'algorithme Negamax parcours beaucoup plus de noeuds, il prend rapidement un très gros avantage.
 Cet algorithme est plus efficace qu'AlphaBeta, mais il est plus long à exécuter.
 
 \newpage
-\section{Difficultés rencontrés}
+\section{Difficultés rencontrées}
 
-Nous avons rencontré quelques difficultés durant la réalisation du jeu, notamment dû à des incompréhensions des règles du jeu:\\
+Nous avons rencontré quelques difficultés durant la réalisation du jeu, notamment dû à des incompréhensions des règles du jeu :\\
 
 \begin{itemize}
     \item Lors du clonage toutes les cases même inoccupées étaient modifiées.
@@ -260,9 +251,6 @@ Nous avons rencontré quelques difficultés durant la réalisation du jeu, notam
 Nous avons mis en place un writer afin de pouvoir exporter plus facilement les données notamment pour faire les graphiques.\\
 
 Le flux s'ouvre au lancement du programme et se ferme à sa fermeture ce qui fait que les fichiers de log resteront vides pendant le fonctionnement du programme, ce qui rend impossible la lecture de la complexité durant le fonctionnement du programme notamment pour le negamax de profondeur 5 ou plus qui demande beaucoup de performances et de temps de calcul.
-
-
-\section{Conclusion}
 
 
 \end{document}
