@@ -23,7 +23,6 @@ public class AlphaBetaPlayer extends Player{
         Pair<Point, Point> bestMove = null;
         for(Pair<Point, Point> move : game.getMove(game.getCurrentPlayer())) {
             State nextState = game.play(move);
-            complexity++;
             int value = -alphabeta(nextState, this.depth,Integer.MIN_VALUE,Integer.MAX_VALUE);
             if (value > bestValue) {
                 bestValue = value;
@@ -40,6 +39,7 @@ public class AlphaBetaPlayer extends Player{
         else{
             for (Pair<Point, Point> move : state.getMove(state.getCurrentPlayer())) {
                 State nextState = state.play(move);
+                complexity++;
                 alpha = Math.max(alpha,-alphabeta(nextState,depth-1,-beta,-alpha));
                 if(alpha >= beta)
                     return alpha;
