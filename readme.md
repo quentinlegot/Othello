@@ -2,7 +2,7 @@
 
 ## Contributeurs
 
-Antonin Boyon
+[Antonin Boyon](https://github.com/Detextra)
 
 [Quentin Legot](https://github.com/SexiestCHiba)
 
