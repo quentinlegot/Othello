@@ -2,7 +2,7 @@
 
 ## Contributeurs
 
-Boyon Anthonin 
+Antonin Boyon
 
 [Quentin Legot](https://github.com/SexiestCHiba)
 
