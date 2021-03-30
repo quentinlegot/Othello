@@ -1,7 +1,12 @@
 # Jeu d’infection - Othello 
-## Boyon Anthonin
-## Legot Quentin
-## Page Arthur
+
+## Contributeurs
+
+Boyon Anthonin 
+
+[Quentin Legot](https://github.com/SexiestCHiba)
+
+[Arthur Page](https://github.com/Arthur7770)
 
 ## Comment lancer le jeu 
 
