@@ -1,6 +1,6 @@
-# Jeu d’infection - Othello 
+# Infection game - Othello 
 
-## Contributeurs
+## Contributors
 
 [Antonin Boyon](https://github.com/Detextra)
 
@@ -8,15 +8,15 @@
 
 [Arthur Page](https://github.com/Arthur7770)
 
-## Comment lancer le jeu 
+## How to launch the game 
 
-Après avoir compilé et placé les fichiers dans une archive .jar:
+After you compiled and placed files in an jar archives (using jar command or ide):
 
-`java -jar othello.jar profondeurJ1 profondeurJ2 alphabeta`
+`java -jar othello.jar depthP1 depthP2 alphabeta`
 
-`profondeurJ1` et `profondeurJ2` correspondent à un entier indiquant à l'algorithme de décision à quelle profondeur il doit calculer et
-`alphabeta` correspond à un booléen indiquant au programme si vous souhaitez utiliser l'algorithme alphabeta (True ou true) ou l'algorithme Negamax (toutes autres valeurs que true)
+`depthP1` and `depthP2` correspond to an integer indicating to the decision algorithim how deep to calculate and
+`alphabeta` correspond to a boolean indicating to the program if you wish to use alphabeta algorithm (True or true values) or negamax algorithm ( all others values than true).
 
-Si profondeurJ1 ou profondeurJ2 ne sont pas corrects, l'algorithme utilisera des paramètres par défaut, soit  (4,4,true)
+If `depthP1` or `depthP2` aren't correct, the program will use default settings (4, 4, true).
 
-Si vous ne souhaitez pas utiliser le logger, indiquer dans le fichier META_INF que vous souhaitez qu'il se lance sur le fichier Main et non sur MainStats
+If you doesn't want to use the logger, change the value `MainStats` to `Main` in META_INF file.
